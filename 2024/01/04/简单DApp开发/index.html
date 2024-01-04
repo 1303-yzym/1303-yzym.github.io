@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/mybanner.jpg">
+  <link rel="icon" href="/img/mybanner.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="YZYM">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="简单DApp开发——NFTMarket合约开发 什么是DApp？&emsp;&emsp;DApp是一种利用智能合约处理数据，利用区块链网络存储数据的去中心化应用。与传统中心化应用需要用户将数据传输到中心化的服务器再进行处理和存储不同，DApp使用户与智能合约进行交互，并自动的生成不可篡改、价值唯一、公开透明、可溯源的账本数据，并存储在区块链网络中，这使数据的安全性得到保障。&emsp;&emsp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单DApp开发">
+<meta property="og:url" content="https://1303-yzym.github.io/2024/01/04/%E7%AE%80%E5%8D%95DApp%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="YZYM">
+<meta property="og:description" content="简单DApp开发——NFTMarket合约开发 什么是DApp？&emsp;&emsp;DApp是一种利用智能合约处理数据，利用区块链网络存储数据的去中心化应用。与传统中心化应用需要用户将数据传输到中心化的服务器再进行处理和存储不同，DApp使用户与智能合约进行交互，并自动的生成不可篡改、价值唯一、公开透明、可溯源的账本数据，并存储在区块链网络中，这使数据的安全性得到保障。&emsp;&emsp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.freecodecamp.org/news/content/images/size/w2000/2020/05/clifford-photography-hiFghSs4keM-unsplash.jpg">
+<meta property="og:image" content="https://5b0988e595225.cdn.sohucs.com/images/20180925/84eb099b05dc427c9131e55c0029d83a.jpeg">
+<meta property="og:image" content="https://image.9game.cn/2017/1/26/15807401.jpg">
+<meta property="og:image" content="https://7up.pics/images/2024/01/04/imagecc41f87315a7a61a.png">
+<meta property="og:image" content="https://www.528btc.com/d/file/2019-04-25/5ac820d70191b27a68d1945b4b3c36af.png">
+<meta property="og:image" content="https://7up.pics/images/2024/01/04/image.png">
+<meta property="og:image" content="https://7up.pics/images/2024/01/04/f85e2976ec2de16169e081fdfa464060.png">
+<meta property="og:image" content="https://img1.baidu.com/it/u=2042134634,1832896754&fm=253&fmt=auto&app=138&f=JPEG?w=960&h=442">
+<meta property="article:published_time" content="2024-01-04T02:00:19.000Z">
+<meta property="article:modified_time" content="2024-01-04T07:49:07.238Z">
+<meta property="article:author" content="YZYM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.freecodecamp.org/news/content/images/size/w2000/2020/05/clifford-photography-hiFghSs4keM-unsplash.jpg">
+  
+  
+  
+  <title>简单DApp开发 - YZYM</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"1303-yzym.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"ITT1JWc1ZucGHzHpMvFxsUuT-gzGzoHsz","app_key":"2aFpjBFkb04qkRfzrAQlXiyB","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>YZYM</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.max-c.com/heybox/dailynews/img/3a3def4953604edf2a7ae27ec9f45687.png?imageMogr2/format/jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="简单DApp开发"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-04 10:00" pubdate>
+          2024年1月4日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          24 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">简单DApp开发</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-01-04T15:49:07+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="简单DApp开发——NFTMarket合约开发"><a href="#简单DApp开发——NFTMarket合约开发" class="headerlink" title="简单DApp开发——NFTMarket合约开发"></a>简单DApp开发——NFTMarket合约开发</h1><p><img src="https://www.freecodecamp.org/news/content/images/size/w2000/2020/05/clifford-photography-hiFghSs4keM-unsplash.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="什么是DApp？"><a href="#什么是DApp？" class="headerlink" title="什么是DApp？"></a>什么是DApp？</h2><p>&emsp;&emsp;DApp是一种利用智能合约处理数据，利用区块链网络存储数据的去中心化应用。与传统中心化应用需要用户将数据传输到中心化的服务器再进行处理和存储不同，DApp使用户与智能合约进行交互，并自动的生成不可篡改、价值唯一、公开透明、可溯源的账本数据，并存储在区块链网络中，这使数据的安全性得到保障。<br>&emsp;&emsp;同时DApp因为其匿名性，无需用户提供其自身信息，这对用户信息起到保护作用。<br>&emsp;&emsp;当今社会，应用提供服务时，往往要求我们提供许多完全多余的身份信息。例如，当我们来到一家饭店，想要使用某微信小程序自助点餐，我们往往需要关注其公众号，提供本人使用的手机号验证，才能得以点餐。这一系列过程繁琐而没有实质性的必要，并且有极大的泄露个人信息的危险（不排除是恶意服务商的有意为之）。这模糊了人的身份。在合理的逻辑下，当我进入饭店，坐下并意图点餐的时候，我便应该获取了顾客的身份；而在当前的逻辑下，我需要通过我的一系列真实的身份信息去申请一个顾客的身份，用永久使用的（或者说是长期使用的）身份信息去换取一个短暂使用的身份，这是完全是本末倒置的。</p>
+<h2 id="什么是ERC"><a href="#什么是ERC" class="headerlink" title="什么是ERC"></a>什么是ERC</h2><p>&emsp;&emsp;ERC是Ethereum Request for Comments（以太坊征求意见提案）的缩写，代表以太坊已正式化的提案，它是由EIP(Ethereum Improvement Proposals以太坊升级提案)经过以太坊开发团队各种审议和测试后通过的一种提案,即对有用提案进行标准化，从而实现对开发者提供模版帮助以及标准限制。而其后的20\721\1155则代表提案号，ERC-20则代表第20号提案，其它提案号亦然。</p>
+<h2 id="ERC20——以太坊标准代币发行协议"><a href="#ERC20——以太坊标准代币发行协议" class="headerlink" title="ERC20——以太坊标准代币发行协议"></a>ERC20——以太坊标准代币发行协议</h2><p><img src="https://5b0988e595225.cdn.sohucs.com/images/20180925/84eb099b05dc427c9131e55c0029d83a.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="什么是代币？"><a href="#什么是代币？" class="headerlink" title="什么是代币？"></a>什么是代币？</h3><p>在以太坊中，代币可以表示几乎一切可以通过数值衡量的东西：</p>
+<ul>
+<li>游戏角色的数值</li>
+<li>账户资产</li>
+<li>金融债券</li>
+<li>某种货币</li>
+<li>……<br><img src="https://image.9game.cn/2017/1/26/15807401.jpg" srcset="/img/loading.gif" lazyload><br>&emsp;&emsp;这些东西往往都代表着价值，而不同系统、不同的事物之间往往需要有价值的流动（例如，用蓝绿修改器去提升游戏角色属性数值），这就需要一个统一的价值界定标准。ERC-20提出了一种同质化货币（Fungible token）的标准，使得每种代币在类型与价值上与其他任何代币都完全相同。<br>ERC-20（以太坊意见征求 20）由 Fabian Vogelsteller 提出于 2015 年 11 月。这是一个能实现智能合约中代币的应用程序接口标准。</li>
+</ul>
+<h3 id="ERC-20-的功能示例包括："><a href="#ERC-20-的功能示例包括：" class="headerlink" title="ERC-20 的功能示例包括："></a>ERC-20 的功能示例包括：</h3><ul>
+<li>将代币从一个帐户转到另一个帐户</li>
+<li>获取帐户的当前代币余额</li>
+<li>获取网络上可用代币的总供应量</li>
+<li>批准一个帐户中一定的代币金额由第三方帐户使用</li>
+</ul>
+<p>&emsp;&emsp;如果智能合约实施了下列方法和事件，它可以被称为 ERC-20 代币合约，一旦部署，将负责跟踪以太坊上创建的代币。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">function</span> <span class="hljs-type">name</span>() <span class="hljs-built_in">public</span> <span class="hljs-keyword">view</span> <span class="hljs-keyword">returns</span> (string)<br>//代币名称<br><span class="hljs-keyword">function</span> symbol() <span class="hljs-built_in">public</span> <span class="hljs-keyword">view</span> <span class="hljs-keyword">returns</span> (string)<br>/代币标识<br><span class="hljs-keyword">function</span> decimals() <span class="hljs-built_in">public</span> <span class="hljs-keyword">view</span> <span class="hljs-keyword">returns</span> (uint8)<br><br><span class="hljs-keyword">function</span> totalSupply() <span class="hljs-built_in">public</span> <span class="hljs-keyword">view</span> <span class="hljs-keyword">returns</span> (uint256)<br><span class="hljs-keyword">function</span> balanceOf(address _owner) <span class="hljs-built_in">public</span> <span class="hljs-keyword">view</span> <span class="hljs-keyword">returns</span> (uint256 balance)<br><span class="hljs-keyword">function</span> transfer(address _to, uint256 _value) <span class="hljs-built_in">public</span> <span class="hljs-keyword">returns</span> (<span class="hljs-type">bool</span> success)<br><span class="hljs-keyword">function</span> transferFrom(address _from, address _to, uint256 _value) <span class="hljs-built_in">public</span> <span class="hljs-keyword">returns</span> (<span class="hljs-type">bool</span> success)<br><span class="hljs-keyword">function</span> approve(address _spender, uint256 _value) <span class="hljs-built_in">public</span> <span class="hljs-keyword">returns</span> (<span class="hljs-type">bool</span> success)<br><span class="hljs-keyword">function</span> allowance(address _owner, address _spender) <span class="hljs-built_in">public</span> <span class="hljs-keyword">view</span> <span class="hljs-keyword">returns</span> (uint256 remaining)<br></code></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;ERC20已经是一个相对成熟的标准，在开发的过程中，我们往往不再需要自己去实现（但在学习的过程中去亲手实现是非常重要的）。   </p>
+<h3 id="OpenZeppelin框架"><a href="#OpenZeppelin框架" class="headerlink" title="OpenZeppelin框架"></a>OpenZeppelin框架</h3><p>&emsp;&emsp;OpenZeppelin是一个开源的框架，提供可复用的智能合约模板来开发分布式的应用、协议和DAO（去中心化的自治组织），通过标准的、经过完整测试和整个社区检视的代码，减少产生漏洞的风险。<br><img src="https://7up.pics/images/2024/01/04/imagecc41f87315a7a61a.png" srcset="/img/loading.gif" lazyload></p>
+<p><a target="_blank" rel="noopener" href="https://www.openzeppelin.com/contracts" title="openzeppelin官网">OpenZeppelin官方网站</a>  </p>
+<p>我们也将通过openzeppelin框架去实现我们的ERC20与ERC721合约</p>
+<h2 id="ERC721——非同质化货币标准"><a href="#ERC721——非同质化货币标准" class="headerlink" title="ERC721——非同质化货币标准"></a>ERC721——非同质化货币标准</h2><p><img src="https://www.528btc.com/d/file/2019-04-25/5ac820d70191b27a68d1945b4b3c36af.png" srcset="/img/loading.gif" lazyload><br>&emsp;&emsp;CryptoKitties是首款利用区块链开发的游戏，玩家们可以购买一只以太猫来进行喂养、繁殖与交易。与ERC20标准下的同质化代币不同，以太猫是一种不可再分的代币（我们可以把ERC20标准下的代币，类比的看作我们现实中使用的货币，一张十块钱可以兑换为两张五块使用，而以太猫就像是一只现实中的小猫，我们无法将再分了（不会有人想吃猫肉吧，太过分了！！！））。<br><img src="https://7up.pics/images/2024/01/04/image.png" srcset="/img/loading.gif" lazyload><br><img src="https://7up.pics/images/2024/01/04/f85e2976ec2de16169e081fdfa464060.png" srcset="/img/loading.gif" lazyload alt="CryptoKitties"><br><a target="_blank" rel="noopener" href="https://www.cryptokitties.co/">CryptoKitties官网</a><br>&emsp;&emsp;CryptoKitties的成功，验证了不可细分的资产是如何产生的，以及如何再以太坊上交易。<br>&emsp;&emsp;由此诞生出了ERC721标准。 ERC721提出了如何开发非同质化货币（Non-Fungible Token,NFT）合约的标准。由于NFT不可分、唯一性的特性，使其与现实中的物品有共通的特点（你不可能找到两片完全相同的树叶；当我们讨论树叶时，树叶是一个不可再分的整体），区块链获得了全新的应用价值。某种程度上，我们可以将现实生活中的任何物品映射到区块链上。目前NFT的概念被数字藏品和电子游戏广泛应用。</p>
+<h3 id="ERC721接口实现"><a href="#ERC721接口实现" class="headerlink" title="ERC721接口实现"></a>ERC721接口实现</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">// SPDX-License-Identifier: Apache-2.0</span><br>pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-selector-class">.7</span>;<br>interface IERC721 <span class="hljs-comment">/* is ERC165 */</span> &#123;<br> <br>    event <span class="hljs-built_in">Transfer</span>(address indexed _from, address indexed _to, uint256 indexed _tokenId);<br>    <span class="hljs-comment">//转移事件：token发生转移时进行event通知；</span><br><br>    event <span class="hljs-built_in">Approval</span>(address indexed _owner, address indexed _approved, uint256 indexed _tokenId);<br>    <span class="hljs-comment">//授权事件：发生授权事件时进行通知；</span><br><br>    event <span class="hljs-built_in">ApprovalForAll</span>(address indexed _owner, address indexed _operator, bool _approved);<br>    <span class="hljs-comment">//全部授权事件，发生全部授权时进行通知；</span><br><br>    function <span class="hljs-built_in">balanceOf</span>(address _owner) external view returns (uint256);<br>    <span class="hljs-comment">//账户余额：返回账户中有多少个token</span><br><br>    function <span class="hljs-built_in">ownerOf</span>(uint256 _tokenId) external view returns (address);<br>    <span class="hljs-comment">//拥有权查询：按照tokenID查询其归属账户</span><br><br>    function <span class="hljs-built_in">safeTransferFrom</span>(address _from, address _to, uint256 _tokenId, bytes memory data) external payable;<br>    <span class="hljs-comment">//tokenID转移，提供两个同名函数，避免出现合约的非标准实现而导致存入的token无法转移</span><br><br>    function <span class="hljs-built_in">safeTransferFrom</span>(address _from, address _to, uint256 _tokenId) external payable;<br>    <span class="hljs-comment">//tokenID安全转移：转移三要素要存在；</span><br><br>    function <span class="hljs-built_in">transferFrom</span>(address _from, address _to, uint256 _tokenId) external payable;<br>    <span class="hljs-comment">//tokenID转移</span><br><br>    function <span class="hljs-built_in">approve</span>(address _approved, uint256 _tokenId) external payable;<br>    <span class="hljs-comment">//授权：指定token授权；</span><br><br>    function <span class="hljs-built_in">setApprovalForAll</span>(address _operator, bool _approved) external;<br>    <span class="hljs-comment">//全部授权，指将用户名下的所有tokenID进行转移；</span><br><br>    function <span class="hljs-built_in">getApproved</span>(uint256 _tokenId) external view returns (address);<br>    <span class="hljs-comment">//授权查询：查询tokenID对应的被授权者；</span><br><br>    function <span class="hljs-built_in">isApprovedForAll</span>(address _owner, address _operator) external view returns (bool);<br>    <span class="hljs-comment">//查看全部授权：查看owner是否对operator赋予了全部授权；</span><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+<p>&emsp;&emsp;有趣的事: 一只以太猫的最高出售价格竟然能达到惊人的340万美元！！！人对于价值的衡量真是魔幻，如此昂贵的电子宠物你想要拥有吗？由于游戏基于以太坊区块链网络，游戏的每一步动作都需要消耗gas，请不要再说什么网游都太氪金了，区块链游戏才是真正的呼吸都需要付费。<br>&emsp;&emsp;与人相关的问题总是如此复杂，甚至充满矛盾。存在矛盾依然能够相对正常（其实什么是正常也很难去定义吧，可我找不到一个贴切的用语去形容了）的行事（机器遇上矛盾必然就宕掉了），这大概就是人与机器最本质的差别吧。所以我认为在人能够使机器认识矛盾之前（首先人类应当能够理解矛盾，可矛盾如何解释呢？我也无法想象，我们或许只能寄希望于世界出现超人），真正的人工智能大概永远也不会出现吧。（血肉苦弱，机械飞升，让人与机械互补？哈哈，太科幻了）<br><img src="https://img1.baidu.com/it/u=2042134634,1832896754&fm=253&fmt=auto&app=138&f=JPEG?w=960&h=442" srcset="/img/loading.gif" lazyload></p>
+<h2 id="NFTMarket合约开发"><a href="#NFTMarket合约开发" class="headerlink" title="NFTMarket合约开发"></a>NFTMarket合约开发</h2><p>开发工具：Remix IDE</p>
+<p>ERC20代码实现：</p>
+<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs d"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span><br><span class="hljs-keyword">pragma</span> solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.20</span>;<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/token/ERC20/ERC20.sol&quot;</span>;<br><br>contract cUSDT <span class="hljs-keyword">is</span> ERC20 &#123;<br>    constructor() ERC20(<span class="hljs-string">&quot;my USDT&quot;</span>, <span class="hljs-string">&quot;myUSDT&quot;</span>) &#123;<br>        _mint(msg.sender, <span class="hljs-number">1</span> * <span class="hljs-number">10</span> ** <span class="hljs-number">8</span> * <span class="hljs-number">10</span> ** decimals());<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>ERC721代码实现：</p>
+<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs d"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span><br><span class="hljs-keyword">pragma</span> solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.20</span>;<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/token/ERC721/ERC721.sol&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/access/Ownable.sol&quot;</span>;<br><br>contract MyNFT <span class="hljs-keyword">is</span> ERC721, ERC721Enumerable, ERC721URIStorage, Ownable &#123;<br>    uint256 <span class="hljs-keyword">private</span> _nextTokenId;<br><br>    constructor() ERC721(<span class="hljs-string">&quot;MyNFT&quot;</span>, <span class="hljs-string">&quot;myNFT&quot;</span>) Ownable(msg.sender) &#123;&#125;<br><br>    <span class="hljs-built_in">function</span> safeMint(address to, <span class="hljs-built_in">string</span> memory uri) <span class="hljs-keyword">public</span> onlyOwner &#123;<br>        uint256 tokenId = _nextTokenId++;<br>        _safeMint(to, tokenId);<br>        _setTokenURI(tokenId, uri);<br>    &#125;<br><br>    <span class="hljs-comment">// The following functions are overrides required by Solidity.</span><br><br>    <span class="hljs-built_in">function</span> _update(<br>        address to,<br>        uint256 tokenId,<br>        address auth<br>    ) internal <span class="hljs-keyword">override</span>(ERC721, ERC721Enumerable) returns (address) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>._update(to, tokenId, auth);<br>    &#125;<br><br>    <span class="hljs-built_in">function</span> _increaseBalance(<br>        address account,<br>        uint128 value<br>    ) internal <span class="hljs-keyword">override</span>(ERC721, ERC721Enumerable) &#123;<br>        <span class="hljs-keyword">super</span>._increaseBalance(account, value);<br>    &#125;<br><br>    <span class="hljs-built_in">function</span> tokenURI(<br>        uint256 tokenId<br>    ) <span class="hljs-keyword">public</span> view <span class="hljs-keyword">override</span>(ERC721, ERC721URIStorage) returns (<span class="hljs-built_in">string</span> memory) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.tokenURI(tokenId);<br>    &#125;<br><br>    <span class="hljs-built_in">function</span> supportsInterface(<br>        bytes4 interfaceId<br>    )<br>        <span class="hljs-keyword">public</span><br>        view<br>        <span class="hljs-keyword">override</span>(ERC721, ERC721Enumerable, ERC721URIStorage)<br>        returns (<span class="hljs-built_in">bool</span>)<br>    &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.supportsInterface(interfaceId);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><ul>
+<li>购买NFT</li>
+<li>出售NFT</li>
+<li>查询在售的NFT（查询所有在售的NFT，查询我正在出售的NFT）</li>
+<li>更改在售的NFT状态（更改价格或下架）</li>
+</ul>
+<p>功能流程：</p>
+<ul>
+<li>购买NFT：<br>查询指定NFT是否存在 -&gt; 购买者将NFT出售价格的代币转移给出售地址 -&gt; NFTMarket合约将NFT转给购买者地址</li>
+<li>出售NFT：<br>售卖者调用safeTransferFrom()将NFT转给NFTMarket，并在data字段中指定价格，NFTMarket合约将自动上架NFT</li>
+<li>查询在售的NFT：<br>1）查询所有在售的NFT<br>直接返回在售NFT列表<br>2）查询调用者账户出售的NFT<br>遍历NFT列表，将属于调用者账户出售的NFT组成列表并返回</li>
+</ul>
+<p>NFTMarket代码实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// SPDX-License-Identifier: MIT</span><br><br>pragma solidity ^<span class="hljs-number">0.8</span><span class="hljs-number">.20</span>;<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/interfaces/IERC721Receiver.sol&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/interfaces/IERC721.sol&quot;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@openzeppelin/contracts/interfaces/IERC20.sol&quot;</span>;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@title</span> NFTMarket contract that allows atomic swaps of ERC20 and ERC721</span><br><span class="hljs-comment"> */</span><br>contract Market is IERC721Receiver &#123;<br>    IERC20 <span class="hljs-keyword">public</span> erc20;<br>    IERC721 <span class="hljs-keyword">public</span> erc721;<br><br>    bytes4 internal <span class="hljs-type">constant</span> <span class="hljs-variable">MAGIC_ON_ERC721_RECEIVED</span> <span class="hljs-operator">=</span> <span class="hljs-number">0x150b7a02</span>;<br><br>    struct Order &#123;<br>        address seller;<br>        uint256 tokenId;<br>        uint256 price;<br>    &#125;<br><br>    mapping(uint256 =&gt; Order) <span class="hljs-keyword">public</span> orderOfId; <span class="hljs-comment">// token id to order</span><br>    Order[] <span class="hljs-keyword">public</span> orders;<br>    mapping(uint256 =&gt; uint256) <span class="hljs-keyword">public</span> idToOrderIndex;<br><br>    event <span class="hljs-title function_">Deal</span><span class="hljs-params">(address buyer, address seller, uint256 tokenId, uint256 price)</span>;<br>    event <span class="hljs-title function_">NewOrder</span><span class="hljs-params">(address seller, uint256 tokenId, uint256 price)</span>;<br>    event <span class="hljs-title function_">CancelOrder</span><span class="hljs-params">(address seller, uint256 tokenId)</span>;<br>    event <span class="hljs-title function_">ChangePrice</span><span class="hljs-params">(</span><br><span class="hljs-params">        address seller,</span><br><span class="hljs-params">        uint256 tokenId,</span><br><span class="hljs-params">        uint256 previousPrice,</span><br><span class="hljs-params">        uint256 price</span><br><span class="hljs-params">    )</span>;<br><br>    constructor(IERC20 _erc20, IERC721 _erc721) &#123;<br>        require(<br>            address(_erc20) != address(<span class="hljs-number">0</span>),<br>            <span class="hljs-string">&quot;Market: IERC20 contract address must be non-null&quot;</span><br>        );<br>        require(<br>            address(_erc721) != address(<span class="hljs-number">0</span>),<br>            <span class="hljs-string">&quot;Market: IERC721 contract address must be non-null&quot;</span><br>        );<br>        erc20 = _erc20;<br>        erc721 = _erc721;<br>    &#125;<br><br>    function <span class="hljs-title function_">buy</span><span class="hljs-params">(uint256 _tokenId)</span> external &#123;<br>        require(isListed(_tokenId), <span class="hljs-string">&quot;Market: Token ID is not listed&quot;</span>);<br><br>        <span class="hljs-type">address</span> <span class="hljs-variable">seller</span> <span class="hljs-operator">=</span> orderOfId[_tokenId].seller;<br>        <span class="hljs-type">address</span> <span class="hljs-variable">buyer</span> <span class="hljs-operator">=</span> msg.sender;<br>        <span class="hljs-type">uint256</span> <span class="hljs-variable">price</span> <span class="hljs-operator">=</span> orderOfId[_tokenId].price;<br><br>        require(<br>            erc20.transferFrom(buyer, seller, price),<br>            <span class="hljs-string">&quot;Market: ERC20 transfer not successful&quot;</span><br>        );<br>        erc721.safeTransferFrom(address(<span class="hljs-built_in">this</span>), buyer, _tokenId);<br>        removeListing(_tokenId);<br><br>        emit <span class="hljs-title function_">Deal</span><span class="hljs-params">(buyer, seller, _tokenId, price)</span>;<br>    &#125;<br><br>    function <span class="hljs-title function_">cancelOrder</span><span class="hljs-params">(uint256 _tokenId)</span> external &#123;<br>        require(isListed(_tokenId), <span class="hljs-string">&quot;Market: Token ID is not listed&quot;</span>);<br><br>        <span class="hljs-type">address</span> <span class="hljs-variable">seller</span> <span class="hljs-operator">=</span> orderOfId[_tokenId].seller;<br>        require(seller == msg.sender, <span class="hljs-string">&quot;Market: Sender is not seller&quot;</span>);<br><br>        erc721.safeTransferFrom(address(<span class="hljs-built_in">this</span>), seller, _tokenId);<br>        removeListing(_tokenId);<br><br>        emit <span class="hljs-title function_">CancelOrder</span><span class="hljs-params">(seller, _tokenId)</span>;<br>    &#125;<br><br>    function <span class="hljs-title function_">changePrice</span><span class="hljs-params">(uint256 _tokenId, uint256 _price)</span> external &#123;<br>        require(isListed(_tokenId), <span class="hljs-string">&quot;Market: Token ID is not listed&quot;</span>);<br>        <span class="hljs-type">address</span> <span class="hljs-variable">seller</span> <span class="hljs-operator">=</span> orderOfId[_tokenId].seller;<br>        require(seller == msg.sender, <span class="hljs-string">&quot;Market: Sender is not seller&quot;</span>);<br><br>        <span class="hljs-type">uint256</span> <span class="hljs-variable">previousPrice</span> <span class="hljs-operator">=</span> orderOfId[_tokenId].price;<br>        orderOfId[_tokenId].price = _price;<br>        Order <span class="hljs-type">storage</span> <span class="hljs-variable">order</span> <span class="hljs-operator">=</span> orders[idToOrderIndex[_tokenId]];<br>        order.price = _price;<br><br>        emit <span class="hljs-title function_">ChangePrice</span><span class="hljs-params">(seller, _tokenId, previousPrice, _price)</span>;<br>    &#125;<br><br>    function <span class="hljs-title function_">getAllNFTs</span><span class="hljs-params">()</span> <span class="hljs-keyword">public</span> view <span class="hljs-title function_">returns</span> <span class="hljs-params">(Order[] memory)</span> &#123;<br>        <span class="hljs-keyword">return</span> orders;<br>    &#125;<br><br>    function <span class="hljs-title function_">getMyNFTs</span><span class="hljs-params">()</span> <span class="hljs-keyword">public</span> view <span class="hljs-title function_">returns</span> <span class="hljs-params">(Order[] memory)</span> &#123;<br>        Order[] <span class="hljs-type">memory</span> <span class="hljs-variable">myOrders</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Order</span>[](orders.length);<br>        <span class="hljs-type">uint256</span> <span class="hljs-variable">myOrdersCount</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">uint256</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; orders.length; i++) &#123;<br>            <span class="hljs-keyword">if</span> (orders[i].seller == msg.sender) &#123;<br>                myOrders[myOrdersCount] = orders[i];<br>                myOrdersCount++;<br>            &#125;<br>        &#125;<br><br>        Order[] <span class="hljs-type">memory</span> <span class="hljs-variable">myOrdersTrimmed</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Order</span>[](myOrdersCount);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">uint256</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; myOrdersCount; i++) &#123;<br>            myOrdersTrimmed[i] = myOrders[i];<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> myOrdersTrimmed;<br>    &#125;<br><br>    function <span class="hljs-title function_">isListed</span><span class="hljs-params">(uint256 _tokenId)</span> <span class="hljs-keyword">public</span> view <span class="hljs-title function_">returns</span> <span class="hljs-params">(bool)</span> &#123;<br>        <span class="hljs-keyword">return</span> orderOfId[_tokenId].seller != address(<span class="hljs-number">0</span>);<br>    &#125;<br><br>    function <span class="hljs-title function_">getOrderLength</span><span class="hljs-params">()</span> <span class="hljs-keyword">public</span> view <span class="hljs-title function_">returns</span> <span class="hljs-params">(uint256)</span> &#123;<br>        <span class="hljs-keyword">return</span> orders.length;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@dev</span> List a good using a ERC721 receiver hook</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> _operator the caller of this function</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> _seller the good seller</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> _tokenId the good id to list</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> _data contains the pricing data as the first 32 bytes</span><br><span class="hljs-comment">     */</span><br>    function <span class="hljs-title function_">onERC721Received</span><span class="hljs-params">(</span><br><span class="hljs-params">        address _operator,</span><br><span class="hljs-params">        address _seller,</span><br><span class="hljs-params">        uint256 _tokenId,</span><br><span class="hljs-params">        bytes calldata _data</span><br><span class="hljs-params">    )</span> <span class="hljs-keyword">public</span> override <span class="hljs-title function_">returns</span> <span class="hljs-params">(bytes4)</span> &#123;<br>        require(_operator == _seller, <span class="hljs-string">&quot;Market: Seller must be operator&quot;</span>);<br>        <span class="hljs-type">uint256</span> <span class="hljs-variable">_price</span> <span class="hljs-operator">=</span> toUint256(_data, <span class="hljs-number">0</span>);<br>        placeOrder(_seller, _tokenId, _price);<br><br>        <span class="hljs-keyword">return</span> MAGIC_ON_ERC721_RECEIVED;<br>    &#125;<br><br>    <span class="hljs-comment">// https://stackoverflow.com/questions/63252057/how-to-use-bytestouint-function-in-solidity-the-one-with-assembly</span><br>    function <span class="hljs-title function_">toUint256</span><span class="hljs-params">(</span><br><span class="hljs-params">        bytes memory _bytes,</span><br><span class="hljs-params">        uint256 _start</span><br><span class="hljs-params">    )</span> <span class="hljs-keyword">public</span> pure <span class="hljs-title function_">returns</span> <span class="hljs-params">(uint256)</span> &#123;<br>        require(_start + <span class="hljs-number">32</span> &gt;= _start, <span class="hljs-string">&quot;Market: toUint256_overflow&quot;</span>);<br>        require(_bytes.length &gt;= _start + <span class="hljs-number">32</span>, <span class="hljs-string">&quot;Market: toUint256_outOfBounds&quot;</span>);<br>        uint256 tempUint;<br><br>        assembly &#123;<br>            tempUint := mload(add(add(_bytes, <span class="hljs-number">0x20</span>), _start))<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> tempUint;<br>    &#125;<br><br>    function <span class="hljs-title function_">placeOrder</span><span class="hljs-params">(</span><br><span class="hljs-params">        address _seller,</span><br><span class="hljs-params">        uint256 _tokenId,</span><br><span class="hljs-params">        uint256 _price</span><br><span class="hljs-params">    )</span> internal &#123;<br>        require(_price &gt; <span class="hljs-number">0</span>, <span class="hljs-string">&quot;Market: Price must be greater than zero&quot;</span>);<br><br>        orderOfId[_tokenId].seller = _seller;<br>        orderOfId[_tokenId].price = _price;<br>        orderOfId[_tokenId].tokenId = _tokenId;<br><br>        orders.push(orderOfId[_tokenId]);<br>        idToOrderIndex[_tokenId] = orders.length - <span class="hljs-number">1</span>;<br><br>        emit <span class="hljs-title function_">NewOrder</span><span class="hljs-params">(_seller, _tokenId, _price)</span>;<br>    &#125;<br><br>    function <span class="hljs-title function_">removeListing</span><span class="hljs-params">(uint256 _tokenId)</span> internal &#123;<br>        delete orderOfId[_tokenId];<br><br>        <span class="hljs-type">uint256</span> <span class="hljs-variable">orderToRemoveIndex</span> <span class="hljs-operator">=</span> idToOrderIndex[_tokenId];<br>        <span class="hljs-type">uint256</span> <span class="hljs-variable">lastOrderIndex</span> <span class="hljs-operator">=</span> orders.length - <span class="hljs-number">1</span>;<br><br>        <span class="hljs-keyword">if</span> (lastOrderIndex != orderToRemoveIndex) &#123;<br>            Order <span class="hljs-type">memory</span> <span class="hljs-variable">lastOrder</span> <span class="hljs-operator">=</span> orders[lastOrderIndex];<br>            orders[orderToRemoveIndex] = lastOrder;<br>            idToOrderIndex[lastOrder.tokenId] = orderToRemoveIndex;<br>        &#125;<br><br>        orders.pop();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>简单DApp开发</div>
+      <div>https://1303-yzym.github.io/2024/01/04/简单DApp开发/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>YZYM</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/29/%E6%AF%94%E7%89%B9%E5%B8%81%E5%8C%BA%E5%9D%97%E9%93%BE%E7%B3%BB%E7%BB%9F/" title="比特币区块链系统">
+                        <span class="hidden-mobile">比特币区块链系统</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"ITT1JWc1ZucGHzHpMvFxsUuT-gzGzoHsz","appKey":"2aFpjBFkb04qkRfzrAQlXiyB","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
