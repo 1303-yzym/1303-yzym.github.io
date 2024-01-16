@@ -33,8 +33,11 @@
 <meta property="og:image" content="https://7up.pics/images/2024/01/09/8.png">
 <meta property="og:image" content="https://7up.pics/images/2024/01/09/9.png">
 <meta property="og:image" content="https://7up.pics/images/2024/01/09/10.png">
+<meta property="og:image" content="https://7up.pics/images/2024/01/15/image.png">
+<meta property="og:image" content="https://7up.pics/images/2024/01/15/imagebc2599f6ae2a933c.png">
+<meta property="og:image" content="https://7up.pics/images/2024/01/15/imagea812d173fce001b6.png">
 <meta property="article:published_time" content="2023-12-29T05:45:15.000Z">
-<meta property="article:modified_time" content="2024-01-09T13:54:01.576Z">
+<meta property="article:modified_time" content="2024-01-15T07:23:34.461Z">
 <meta property="article:author" content="YZYM">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://7up.pics/images/2023/12/29/1b41a831edf201be6.png">
@@ -259,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5k 字
+          6.3k 字
         
       </span>
     
@@ -270,7 +273,7 @@
         
         
         
-          42 分钟
+          53 分钟
         
       </span>
     
@@ -320,7 +323,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-01-09T21:54:01+08:00
+                    本文最后更新于 2024-01-15T15:23:34+08:00
                   
                   
 
@@ -521,7 +524,7 @@
 </tr>
 </tbody></table>
 <p><img src="https://7up.pics/images/2023/12/29/5.png" srcset="/img/myloading.gif" lazyload alt="交易示例"></p>
-<p>OP_DUP:复制栈顶元素，并将副本放置于栈顶<br>OP_CHECKSIG:OP_CHECKSIG 是用于验证 tx 输入签名是否有效的脚本操作码。OP_CHECKSIG 希望堆栈上有两个值。按照堆栈深度的顺序，这两个值分别是公钥和脚本签名。这两个值通常是通过运行我们试图验证的事务输入的 scriptSig 脚本获得的。scriptSig 脚本运行后会被删除，但堆栈保持不变。然后，运行现在正在使用的上一个事务输出中的 scriptPubKey 脚本，通常以 OP_CHECKSIG 结束。<br><font color=red>TODO 为什么OP_CHECKSIG不需要被签名数据就可以验证（为了避免文章过于冗长，单开一篇，记得在这里放上链接）</font><br><a target="_blank" rel="noopener" href="https://en.bitcoin.it/wiki/OP_CHECKSIG">OP_CHECKSIG</a></p>
+<p>OP_DUP:复制栈顶元素，并将副本放置于栈顶<br>OP_CHECKSIG:OP_CHECKSIG 是用于验证 tx 输入签名是否有效的脚本操作码。OP_CHECKSIG 希望堆栈上有两个值。按照堆栈深度的顺序，这两个值分别是公钥和脚本签名。这两个值通常是通过运行我们试图验证的事务输入的 scriptSig 脚本获得的。scriptSig 脚本运行后会被删除，但堆栈保持不变。然后，运行现在正在使用的上一个事务输出中的 scriptPubKey 脚本，通常以 OP_CHECKSIG 结束。<br><font color=red>TODO: 为什么OP_CHECKSIG不需要被签名数据就可以验证（为了避免文章过于冗长，单开一篇，记得在这里放上链接）</font><br><a target="_blank" rel="noopener" href="https://en.bitcoin.it/wiki/OP_CHECKSIG">OP_CHECKSIG</a></p>
 <p>脚本的使用就是将解锁脚本与锁定脚本拼接，执行脚本。<br>例如：<br>解锁脚本：张三的<Signature> 张三的<Public Key> | 锁定脚本：OP_DUP OP_HASH160 张三的<Public Key Hash> OP_EQUAL OP_CHECKSIG</p>
 <p>执行过程：<br>张三的&lt;Signature&gt;入栈  –&gt;</p>
 <p>  张三的&lt;Public Key&gt;入栈  –&gt;  </p>
@@ -530,12 +533,14 @@
 <p>  张三的&lt;Public Key Hash&gt;入栈  –&gt;  </p>
 <p>  OP_EQUAL， 取出栈顶的两个元素进行比较，若相同，则移除元素，继续执行；若栈顶两元素不同，则中断执行，返回失败。  –&gt;  OP_CHECKSIG，检查签名，根据结果返回成功或失败（此时栈内元素尚有张三的&lt;Signature&gt;与张三的&lt;Public Key&gt;）</p>
 <h3 id="状态数据"><a href="#状态数据" class="headerlink" title="状态数据"></a>状态数据</h3><p>&emsp;&emsp;在比特币系统中，交易表示一次价值转移操作，会导致账本状态的一次改变，如增加了一条交易记录；区块表示记录一段时间内发生的交易和状态结果，是对当前账本状态的一次共识和确认；链是由一个个区块按照发生时间顺序串联而成，可以看作是整个区块链状态变化的日志记录。<br><img src="https://7up.pics/images/2024/01/09/7.png" srcset="/img/myloading.gif" lazyload></p>
-<h2 id="比特币网络层"><a href="#比特币网络层" class="headerlink" title="比特币网络层"></a>比特币网络层</h2><p>比特币网络采用非结构化P2P网络<font color=red>（ TODO 新开一篇什么是结构化P2P与非结构化P2P，记得放链接）</font>，不存在中心服务器。在区块链网络存在“全节点”和“轻节点”等，发挥不同作用的节点：</p>
+<h3 id="默克尔树"><a href="#默克尔树" class="headerlink" title="默克尔树"></a>默克尔树</h3><p>TODO: 默克尔树单开一篇</p>
+<h2 id="比特币网络层"><a href="#比特币网络层" class="headerlink" title="比特币网络层"></a>比特币网络层</h2><p>比特币网络采用非结构化P2P网络，不存在中心服务器。在区块链网络存在“全节点”和“轻节点”等，发挥不同作用的节点：</p>
 <ul>
 <li>全节点是比特币网络中功能最完整的节点。全节点需要始终在线，参与出块竞争计算，存储整个区块链的完整信息，监听网络中传播的交易信息，收集并验证交易的是否合法，并且提供P2P网络的路由功能。</li>
 <li>轻节点不需要参加出块竞争计算，只存储区块链的区块头信息，以及与自身有关的交易信息，可以发起简单支付验证请求（Simplified Payment Verification，SPV），向全节点请求数据来验证交易，并提供P2P路由功能。轻节点主要提供交易功能，但往往也提供钱包功能。</li>
 </ul>
 <p>比特币系统的P2P网络基于TCP构建，默认RPC通信服务端口是8332，默认数据同步端口是8333，比特币系统的P2P网络主要采用了Gossip协议来实现节点发现、节点连接、区块广播、交易广播等功能。</p>
+<h3 id="非结构化P2P网络"><a href="#非结构化P2P网络" class="headerlink" title="非结构化P2P网络"></a>非结构化P2P网络</h3><p>TODO: 新开一篇什么是结构化P2P与非结构化P2P，记得放链接</p>
 <h3 id="节点发现管理"><a href="#节点发现管理" class="headerlink" title="节点发现管理"></a>节点发现管理</h3><p>&emsp;&emsp;当一个新的比特币网络节点启动后，为了能加入比特币网络，它必须至少发现一个网络中的活动节点并与之建立连接。在比特币网络中，一个新启动的节点可以通过两种方式发现其它网络节点：</p>
 <ul>
 <li>(1) 利用DNS种子节点<br>&emsp;&emsp;比特币系统的客户端会维护一个列表，列表中记录了长期稳定运行的节点（这些节点一般由区块链社区维护），这些节点也被称之为DNS(中心化域名查询服务)种子（DNS-seed）。新节点可以连接到种子节点，快速发现网络中的其它节点。DNS种子节点一般由比特币社区成员维护，种子节点通过自动扫描网络获取活跃节点的IP地址，如果某节点运行在默认的8332端口，将被添加到种子节中。<br>&emsp;&emsp;<font color=red>注意</font>：DNS种子节点查询结果是未被认证的，而且恶意节点操作者或网络中间人攻击者可以只返回被攻击者控制的节点的IP地址，在攻击者自己的网络中隔离程序，并且允许攻击者壮大它的交易和区块。</li>
@@ -555,11 +560,36 @@
 <p>&emsp;&emsp;节点之间一旦连接，新节点将会发送一条包含自己IP地址的addr消息给对等节点，对等节点收到以后又会向与它连接的相邻节点发送addr消息，这样新节点的IP地址就会在P2P网络进行广播。此外，新节点还可以发送getaddr消息，要求对等节点把已知的节点的IP地址发送过来。通过这种方式，新节点可以找到需要连接的其它对等节点。</p>
 <p><img src="https://7up.pics/images/2024/01/09/9.png" srcset="/img/myloading.gif" lazyload></p>
 <p>&emsp;&emsp;为了维持与对等节点的连接，节点默认情况下每 30 分钟内会给对等节点至少发送一次信息。如果超过 90 分钟没有收到回复，节点会认为连接已经断开。</p>
-<h3 id="交易广播"><a href="#交易广播" class="headerlink" title="交易广播"></a>交易广播</h3><p>&emsp;&emsp;在比特币系统中，节点为了向比特币系统发送一笔交易，需要向邻近的对等全节点发送Inv消息（即Inventory消息，是比特币网络协议中的一种消息类型。当一个节点发现一个新的交易或区块时，它会将这个对象的哈希值包装在一个Inv消息中，然后将这个Inv消息广播给它的对等节点。这样，其他节点就知道了有一个新的交易或区块被发现。）。如果接收到对等节点返回的GetData消息，节点再使用Tx消息（即Transaction消息，也是比特币网络协议中的一种消息类型。当一个节点收到一个Inv消息并发现它还没有存储相关的交易或区块时，它会向发送Inv消息的节点发送一个GetData消息，请求完整的交易或区块数据。然后，发送Inv消息的节点会将完整的交易或区块数据包装在一个Tx消息中，发送给请求的节点。）向对等节点发送交易信息。对等节点接收到交易信息后，将以同样的方式向其它邻近节点转发交易信息。</p>
+<h3 id="数据分发与同步"><a href="#数据分发与同步" class="headerlink" title="数据分发与同步"></a>数据分发与同步</h3><h4 id="交易广播"><a href="#交易广播" class="headerlink" title="交易广播"></a>交易广播</h4><p>&emsp;&emsp;在比特币系统中，节点为了向比特币系统发送一笔交易，需要向邻近的对等全节点发送Inv消息（即Inventory消息，是比特币网络协议中的一种消息类型。当一个节点发现一个新的交易或区块时，它会将这个对象的哈希值包装在一个Inv消息中，然后将这个Inv消息广播给它的对等节点。这样，其他节点就知道了有一个新的交易或区块被发现。）。如果接收到对等节点返回的GetData消息，节点再使用Tx消息（即Transaction消息，也是比特币网络协议中的一种消息类型。当一个节点收到一个Inv消息并发现它还没有存储相关的交易或区块时，它会向发送Inv消息的节点发送一个GetData消息，请求完整的交易或区块数据。然后，发送Inv消息的节点会将完整的交易或区块数据包装在一个Tx消息中，发送给请求的节点。）向对等节点发送交易信息。对等节点接收到交易信息后，将以同样的方式向其它邻近节点转发交易信息。</p>
 <p><img src="https://7up.pics/images/2024/01/09/10.png" srcset="/img/myloading.gif" lazyload></p>
-<h3 id="交易池"><a href="#交易池" class="headerlink" title="交易池"></a>交易池</h3><p>&emsp;&emsp;比特币网络中每个节点都会维护一个未确认交易列表，称为“交易池”。节点使用交易池记录并跟踪等待被区块链系统确认的交易。例如，具有钱包功能的节点会使用交易池来记录那些已发送到网络但还未被确认的，只与该节点上的钱包相关的预支付交易信息。</p>
+<h5 id="交易池"><a href="#交易池" class="headerlink" title="交易池"></a>交易池</h5><p>&emsp;&emsp;比特币网络中每个节点都会维护一个未确认交易列表，称为“交易池”。节点使用交易池记录并跟踪等待被区块链系统确认的交易。例如，具有钱包功能的节点会使用交易池来记录那些已发送到网络但还未被确认的，只与该节点上的钱包相关的预支付交易信息。</p>
 <p>&emsp;&emsp;某些节点还维护一个单独的“孤立交易池”。所谓“孤立交易”是指，如果<font color=red>一个交易的输入与某未知的交易有关</font>，如与缺失的父交易相关，该孤立交易就会被暂时存储在孤立交易池中直到父交易的信息到达。当一个交易被添加到交易池时，会同时检查孤立交易池，看是否有某个孤立交易引用了此交易的输出（子交易）。任何匹配的孤立交易会被进行验证。如果验证有效，它们会从孤立交易池中删除，并添加到交易池中。</p>
-<h3 id="区块广播与同步"><a href="#区块广播与同步" class="headerlink" title="区块广播与同步"></a>区块广播与同步</h3><p>当一个节点生成一个新区块时，使用以下方法把新区块广播给其它对等节点。</p>
+<h4 id="区块广播与同步"><a href="#区块广播与同步" class="headerlink" title="区块广播与同步"></a>区块广播与同步</h4><p>当节点挖出一个新的区块时，使用以下方式将其发送给其他区块<br><img src="https://7up.pics/images/2024/01/15/image.png" srcset="/img/myloading.gif" lazyload></p>
+<ul>
+<li>出块节点将区块信息广播给所有已知的全节点</li>
+<li>节点A验证收到的区块信息</li>
+<li>若节点A验证区块合法，则向节点A的临近节点广播Inv消息（此时Inv消息中并不包含区块具体信息，而是只包含节点A验证过的区块的区块头等相关信息）</li>
+<li>节点B接收到节点A发送的Inv消息，若节点B确认从未收到过这个区块信息，则向节点A发送Getdata消息，要求得到交易记录，以及区块的具体信息</li>
+<li>节点A收到Getdata消息后将具体的区块信息发送给节点B（这一系列的消息验证都是为了减少网络带宽消耗）</li>
+<li>由于节点A已经验证区块信息，节点A在此区块后继续进行竞争计算。节点B验证区块信息后重复以上过程</li>
+</ul>
+<h3 id="Gossip协议"><a href="#Gossip协议" class="headerlink" title="Gossip协议"></a>Gossip协议</h3><p>TODO: 单开一篇</p>
+<h2 id="比特币区块链系统共识层"><a href="#比特币区块链系统共识层" class="headerlink" title="比特币区块链系统共识层"></a>比特币区块链系统共识层</h2><p>&emsp;&emsp;在比特币系统中，采用了PoW(Proof of Work)工作量证明共识机制，比特币网络节点如果想生成一个新的区块并写入区块链，必须通过求解工作量证明难题来竞争分布式账本的记账权，在节点成功求解出难题后，会马上将新区块对全网进行广播，网络的其它节点收到广播后，会立刻对其进行验证。如果验证通过，则表明已经有节点已求解出难题，获得当前区块的记账权，网络节点就选择接受这个新区块，记录到节点本地的账本中，然后进行下一个区块的竞争计算。</p>
+<p>&emsp;&emsp;比特币系统通过共识机制竞争计算生成新区块的过程，被称为“挖矿（Mine）”，因此比特币网络节点又被称为“矿工（Miner）”，后续如以太坊等其它区块链系统都延用了这种说法。</p>
+<h3 id="比特币区块链系统PoW共识机制"><a href="#比特币区块链系统PoW共识机制" class="headerlink" title="比特币区块链系统PoW共识机制"></a>比特币区块链系统PoW共识机制</h3><p><img src="https://7up.pics/images/2024/01/15/imagebc2599f6ae2a933c.png" srcset="/img/myloading.gif" lazyload alt="PoW竞争计算流程图"></p>
+<h3 id="比特币区块链系统PoW的特点"><a href="#比特币区块链系统PoW的特点" class="headerlink" title="比特币区块链系统PoW的特点"></a>比特币区块链系统PoW的特点</h3><p>比特币系统的PoW共识机制具有两大特点：</p>
+<ul>
+<li>比特币系统PoW共识机制采用的“难题”具有难以解答，但很容易验证答案的正确性的特点，同时求解难题的“难度”，即比特币网络节点平均解出一个难题所消耗时间，是可以通过调整难题中的部分参数来进行控制的，因此比特币系统可以很好地控制链增长的速度；</li>
+<li>通过控制区块链的增长速度，保证了如果一个节点成功解出难题完成了新区块的创建，该区块能够以更快的速度在所有节点之间传播，并且得到其他节点的验证，再结合比特币系统所采取的“最长链有效”的评判机制，就能够在大多数（超过比特币网络51%算力）节点都是诚实的情况下，避免恶意节点对区块链的控制。</li>
+</ul>
+<h3 id="竞争出块冲突"><a href="#竞争出块冲突" class="headerlink" title="竞争出块冲突"></a>竞争出块冲突</h3><p>&emsp;&emsp;比特币系统的PoW共识机制在运行过程中，有可能出现两个或多个不同的节点不分先后求解出满足要求的哈希值结果，都认为自己获得了出块权，并向系统网络广播自己生成新区块，这将导致节点竞争出块冲突。<br><img src="https://7up.pics/images/2024/01/15/imagea812d173fce001b6.png" srcset="/img/myloading.gif" lazyload></p>
+<h2 id="比特币区块链激励层"><a href="#比特币区块链激励层" class="headerlink" title="比特币区块链激励层"></a>比特币区块链激励层</h2><p>&emsp;&emsp;在比特币系统中，比特币网络约每10分钟生成一个不超过1MB大小的区块，用于记录这10分钟内发生的验证过的交易内容，并将区块串联到最长的链尾部，每个区块的成功提交者可以得到系统一定数量的比特币的奖励（该奖励将作为区块内的第一个CoinBase交易，并将在一定区块数后才能使用），以及用户附加到交易上的支付服务费用。因此，即使没有任何用户交易，比特币网络也可以自行产生合法的区块并生成奖励。每个区块的奖励最初是50个比特币，每隔21万个区块（约4年时间）自动减半，最终比特币总量稳定在2100万个(即使永远也不会到达这个值)。</p>
+<p>比特币系统的激励机制主要包括以下要点：</p>
+<ul>
+<li>加密货币总量固定：比特币总量不超过 2100 万个。 </li>
+<li>出块激励：每当有节点获得一个区块的记账权，比特币系统就会发行出新的比特币作为对节点的奖励。一个区块产生的比特币数量都会按几何级数递减，每产出 21 万个区块，获得奖励的比特币数量就会减少 50% 。截至2022年，每个区块的奖励已降低为6.25个比特币，是比特币系统上线时的八分之一。</li>
+<li>交易激励：用户会在交易中包含交易费，作为处理交易的服务费支付给获得区块记账权的节点。</li>
+</ul>
 
                 
               </div>
@@ -985,5 +1015,5 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
