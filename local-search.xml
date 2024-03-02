@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>白马篇</title>
+    <link href="/2024/02/01/%E7%99%BD%E9%A9%AC%E7%AF%87/"/>
+    <url>/2024/02/01/%E7%99%BD%E9%A9%AC%E7%AF%87/</url>
+    
+    <content type="html"><![CDATA[<h1 id="白马篇"><a href="#白马篇" class="headerlink" title="白马篇"></a>白马篇</h1><h2 id="曹植·魏晋"><a href="#曹植·魏晋" class="headerlink" title="曹植·魏晋"></a>曹植·魏晋</h2><p>白马饰金羁，连翩西北驰。<br>借问谁家子，幽并游侠儿。<br>少小去乡邑，杨声沙漠垂。<br>宿昔秉良弓，楛矢何参差！<br>控弦破左的，右发摧月支。<br>仰手接飞猱，俯身散马蹄。<br>狡捷过猴猿，勇剽若豹螭。<br>边城多警急，虏骑数迁移。<br>羽檄从北来，厉马登高堤。<br>长驱蹈匈奴，左顾陵鲜卑。<br>弃身锋刃端，性命安可怀？<br>父母且不顾，何言子与妻？<br>名编壮士籍，不得中顾私。<br>捐躯赴国难，视死忽如归。   </p><p><img src="https://img.zuowenxue.com/zuozhe/lianghan/caozhi.jpg" alt="曹植像" title="曹植像"><br><a href="https://baike.baidu.com/item/%E7%99%BD%E9%A9%AC%E7%AF%87/22087" title="白马篇·曹植">白马篇·曹植</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>操作系统名词理解记录</title>
+    <link href="/2024/01/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3/"/>
+    <url>/2024/01/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%90%8D%E8%AF%8D%E7%90%86%E8%A7%A3/</url>
+    
+    <content type="html"><![CDATA[<h1 id="操作系统名词理解记录"><a href="#操作系统名词理解记录" class="headerlink" title="操作系统名词理解记录"></a>操作系统名词理解记录</h1><h2 id="重入码"><a href="#重入码" class="headerlink" title="重入码"></a>重入码</h2><p>&emsp;&emsp;可重入代码 (Reentry code)也叫 纯代码 (Pure code)是一种允许多个进程同时访问的代码。 为了使各进程所执行的代码完全相同，故不允许任何进程对其进行修改。 程序 在运行过程中可以被打断，并由开始处再次执行，并且在合理的范围内（多次重入，而不造成 堆栈溢出 等其他问题），程序可以在被打断处继续执行，且执行结果不受影响。</p><p>&emsp;&emsp;可重入编码的编写需要遵循以下原则： 1. 避免使用全局变量和静态变量，这些变量会在多个任务之间共享，容易出现冲突。 2. 使用局部变量和动态内存分配，避免多个任务之间共享同一块内存。 3. 避免使用不可重入的函数，如strtok ()、strerror ()等，这些函数使用了全局变量或静态变量，会导致多个任务之间的冲突。</p><h2 id="上下文切换（context-switch）"><a href="#上下文切换（context-switch）" class="headerlink" title="上下文切换（context switch）"></a>上下文切换（context switch）</h2><p>&emsp;&emsp;</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>猫猫交换机</title>
     <link href="/2024/01/13/%E7%8C%AB%E7%8C%AB%E4%BA%A4%E6%8D%A2%E6%9C%BA/"/>
     <url>/2024/01/13/%E7%8C%AB%E7%8C%AB%E4%BA%A4%E6%8D%A2%E6%9C%BA/</url>
