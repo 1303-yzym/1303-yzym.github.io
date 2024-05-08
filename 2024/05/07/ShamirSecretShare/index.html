@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://th.bing.com/th/id/OIP.1gUkjK1Wwm-hTlzubp9VagHaEK?rs=1&amp;pid=ImgDetMain">
 <meta property="article:published_time" content="2024-05-07T11:42:11.000Z">
-<meta property="article:modified_time" content="2024-05-08T01:52:19.403Z">
+<meta property="article:modified_time" content="2024-05-08T01:58:23.694Z">
 <meta property="article:author" content="YZYM">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -316,7 +316,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-05-08T09:52:19+08:00
+                    本文最后更新于 2024-05-08T09:58:23+08:00
                   
                   
 
@@ -346,9 +346,9 @@
 
 <p>如果攻击者拥有一些点，但不足以满足阈值，则可以使用代数来减少可能的多项式的数量。这使得执行暴力攻击以解密secret 变得更加容易。<br>于是我们引入模运算，将普通多项式取模一个大素数转换为循环多项式。<br>$<br> f(x) = (a_{k-1}x^{k-1} + a_{k-2}x^{k-2} + … + a_1x + S) \mod P<br>$<br>应用模数会使函数循环，因为它只能达到模数的数量，然后它会再次回到零。<br>在多普通多项式应用模数的时候有一个需要注意的点：需要确保模数是一个比 Secret、多项式系数以及打算生成的份额数量更大的质数。选择的质数越大，找到 secret 的概率就越低。<br>当已知点数量达到阈值的时候，仍然可以通过插值找到 secret，但是现在由于应用模数丢失共享数据的部分信息从而低于共享数据数量的阈值并不能提供更多关于 secret 的信息，所以普通多项式存在的安全漏洞也就迎刃而解。</p>
 <h3 id="模运算"><a href="#模运算" class="headerlink" title="模运算"></a>模运算</h3><p>$<br>(a+b) \mod c = (a \mod c) + (b \mod c)<br>$   </p>
-<p>$<br>(a-b) \mod c = (a \mod c) - (b \mod c)<br>$  </p>
-<p>$<br>(a<em>b) \mod c = (a \mod c) </em> (b \mod c)<br>$   </p>
+<p>$<br>(a-b) \mod c = (a \mod c) - (b \mod c)<br>$</p>
 <p>$<br>a^b \mod c = ((a \mod c)^b)\mod c<br>$   </p>
+<p>$(a \cdot b) \mod c = ((a \mod c) \cdot (b \mod c)) \mod c$</p>
 <h3 id="Lagrange插值法"><a href="#Lagrange插值法" class="headerlink" title="Lagrange插值法"></a>Lagrange插值法</h3><p>Lagrange插值法是一种通过已知的点集合来找到一个多项式函数，使得这个函数在这些已知点的值与实际值相等的方法。假设我们有n个点，我们可以找到一个n-1次的多项式来适应这些点。</p>
 <p>假设我们有n个点 $(x_0, y_0), (x_1, y_1), …, (x_{n-1}, y_{n-1})$，Lagrange插值多项式可以表示为：   </p>
 <p>$<br>L(x) = \sum_{i=0}^{n-1} y_i \cdot l_i(x)<br>$</p>
