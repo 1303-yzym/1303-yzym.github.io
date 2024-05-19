@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/mybanner.jpg">
+  <link rel="icon" href="/img/mybanner.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="YZYM">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="IPFS简介IPFS(星际文件系统)是一种点对点分布式，使用类git版本控制，基于内容寻址的文件系统，旨在将全球计算机连接到一个存储网络中，创建一个持久的全球化的文件共享网络。与IPFS相比，HTTP防范攻击成本高，大规模数据存储、维护、传输困难，数据存储成本高，和数据中心化带来的数据泄露风险。IPFS同时具有下载速度高，全球存储优化，安全性高，数据持续存储的特点。 IPFS协议栈    身份层每">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPFS协议及其相关协议">
+<meta property="og:url" content="https://1303-yzym.github.io/2024/05/18/IPFS%E5%8D%8F%E8%AE%AE%E5%8F%8A%E5%85%B6%E7%9B%B8%E5%85%B3%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="YZYM">
+<meta property="og:description" content="IPFS简介IPFS(星际文件系统)是一种点对点分布式，使用类git版本控制，基于内容寻址的文件系统，旨在将全球计算机连接到一个存储网络中，创建一个持久的全球化的文件共享网络。与IPFS相比，HTTP防范攻击成本高，大规模数据存储、维护、传输困难，数据存储成本高，和数据中心化带来的数据泄露风险。IPFS同时具有下载速度高，全球存储优化，安全性高，数据持续存储的特点。 IPFS协议栈    身份层每">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.ibb.co/jgFjsKj/image.png">
+<meta property="article:published_time" content="2024-05-18T01:53:49.000Z">
+<meta property="article:modified_time" content="2024-05-19T08:09:13.668Z">
+<meta property="article:author" content="YZYM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.ibb.co/jgFjsKj/image.png">
+  
+  
+  
+  <title>IPFS协议及其相关协议 - YZYM</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"1303-yzym.github.io","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/myloading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"ITT1JWc1ZucGHzHpMvFxsUuT-gzGzoHsz","app_key":"2aFpjBFkb04qkRfzrAQlXiyB","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+    <!-- Google tag (gtag.js) -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        Fluid.utils.createScript("https://www.googletagmanager.com/gtag/js?id=", function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', '');
+        });
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>YZYM</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://cdn.max-c.com/heybox/dailynews/img/3a3def4953604edf2a7ae27ec9f45687.png?imageMogr2/format/jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="IPFS协议及其相关协议"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-18 09:53" pubdate>
+          2024年5月18日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          61 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">IPFS协议及其相关协议</h1>
+            
+              <p id="updated-time" class="note note-info" style="display: none">
+                
+                  
+                    本文最后更新于 2024-05-19T16:09:13+08:00
+                  
+                  
+
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="IPFS简介"><a href="#IPFS简介" class="headerlink" title="IPFS简介"></a>IPFS简介</h1><p>IPFS(星际文件系统)是一种点对点分布式，使用类git版本控制，基于内容寻址的文件系统，旨在将全球计算机连接到一个存储网络中，创建一个持久的全球化的文件共享网络。<br>与IPFS相比，HTTP防范攻击成本高，大规模数据存储、维护、传输困难，数据存储成本高，和数据中心化带来的数据泄露风险。IPFS同时具有下载速度高，全球存储优化，安全性高，数据持续存储的特点。</p>
+<h1 id="IPFS协议栈"><a href="#IPFS协议栈" class="headerlink" title="IPFS协议栈"></a>IPFS协议栈</h1><p><a target="_blank" rel="noopener" href="https://ibb.co/9sjdSXd"><img src="https://i.ibb.co/jgFjsKj/image.png" srcset="/img/myloading.gif" lazyload alt="image" border="0" /></a>   </p>
+<h2 id="身份层"><a href="#身份层" class="headerlink" title="身份层"></a>身份层</h2><p>每一个IPFS节点在代码中都以Node结构表示，每一个Node中包含NodeID及一组公私钥对。<br>NodeID由公钥经过两次哈希加密生成，当两个节点首次建立连接时，首先需要交换公钥验证身份。<br>IPFS使用的哈希算法比较灵活，可以由用户自定义，默认使用MultiHash存储</p>
+<p>S/K节点ID分配需要满足三个条件：<br>· 节点不能自由的选择ID<br>· 不能生成多个ID<br>· 节点ID无法伪装和窃取</p>
+<p>节点生成身份需要满足两个密码学问题：   </p>
+<ol>
+<li>静态问题：公钥经过两次哈希加密后拥有C1个前置零，那么公钥的一次哈希值即为NodeID</li>
+<li>动态问题：动态的生成一个随机数x，要求NodeID与x异或之后的值求哈希，得到的哈希值拥有C2个前置零</li>
+</ol>
+<p>静态问题使得节点无法自由的选择NodeID（防范日蚀攻击）。<br>动态问题则使大量生成身份ID的成本提高（可以使女巫攻击和流失攻击成本提高）。<br>非对称的签名使得节点身份能够验证。</p>
+<p>ps:<br>女巫攻击是一种在p2p网络中拥有大量节点，将这些节点伪装成正常节点，从而进行拒绝响应，干扰查询，控制网络的行为。目前没有能够完全防范女巫攻击的方法，只能提高攻击的成本，从而使得攻击者无利可图。<br>日蚀攻击与女巫攻击相似，通过包围单个或部分节点使它们的连接全部都保持在攻击者控制的节点上，使被攻击的节点信息都必须经由这些恶意节点，这样一来攻击者就可以使一个或几个节点被屏蔽。防范日蚀攻击的方法，可以限制ID的生成。</p>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>网络层的特点：   </p>
+<p>传输: IPFS兼容现有的主流传输协议，其中有最适合浏览器端使用的WebRTC DataChannels，也有低延时 uTP(LEDBAT)等传输协议。（uTP（Micro Transport Protocol）是一种面向连接的传输协议，最初由BitTorrent公司开发并使用，用于优化P2P文件共享协议中的数据传输，可以与TCP兼容）   </p>
+<p>可靠性: 使用uTP和 sctp 来保障，这两种协议可以动态调整网络状态。（这两种协议都具有拥塞控制）   </p>
+<p>可连接性: 使用ICE等NAT穿越技术来实现广域网的可连接性。   </p>
+<p>完整性: 使用哈希校验检查数据完整性，IPFS 网络中所有数据块都具有唯一的哈希值。（这是怎么做到的？回头查一下）   </p>
+<p>可验证性：使用数据发送者的公钥及HMAC消息认证码来检查消息的真实性。   </p>
+<h2 id="路由层"><a href="#路由层" class="headerlink" title="路由层"></a>路由层</h2><h3 id="主要功能："><a href="#主要功能：" class="headerlink" title="主要功能："></a>主要功能：</h3><p>· 节点路由<br>· 内容路由<br>· 数据存取   </p>
+<h3 id="核心技术："><a href="#核心技术：" class="headerlink" title="核心技术："></a>核心技术：</h3><p>分布式哈希表DHT</p>
+<h3 id="分布式系统寻址的发展过程："><a href="#分布式系统寻址的发展过程：" class="headerlink" title="分布式系统寻址的发展过程："></a>分布式系统寻址的发展过程：</h3><p>第一阶段：以BitTorrent为代表，需要中心化的服务器提供拥有内容的节点信息。    </p>
+<p>第二阶段：使用洪泛（message flooding）来定位数据。查询消息将被发送给全网所有节点，这将导致网络负载急剧增大，从而造成拥塞。   </p>
+<p>第三阶段：DHT，在全网维护一个巨大的哈希表，每一个节点只拥有这个哈希表的一部份，最多需要logn次跳转即可找到拥有数据的节点。</p>
+<p>常见的DHT算法：<br>Kademilia DHT<br>Coral DHT<br>S/Kademilia   </p>
+<h3 id="Kademilia"><a href="#Kademilia" class="headerlink" title="Kademilia"></a>Kademilia</h3><p>特性：<br>· 使用xor的方法定义逻辑上的距离<br>· 请求路径时，每个节点的信息都是完备的，最多需要跳转logn次即可完成查询<br>· 节点ID与KEY拥有相同的值域，都是由SHA-1生成的160位摘要，这大大简化了查询时的信息量。<br>· 可根据查询速度和存储量的需求调整节点需要维护的DHT的大小</p>
+<h4 id="Kademilia二叉树及K-Bucket"><a href="#Kademilia二叉树及K-Bucket" class="headerlink" title="Kademilia二叉树及K-Bucket"></a>Kademilia二叉树及K-Bucket</h4><p>kademilia二叉树：<br>Kademilia的节点ID由一颗二叉树维护，每个节点ID都是二叉树的叶子节点。可以沿最短唯一前缀找到节点。可以以节点的最短唯一前缀向下拆分不包含自身的二叉树。</p>
+<p>K-Bucket：<br>节点路由表用于保存每个节点与自己一定距离范围内其他节点的连接信息。 </p>
+<p>每一条路由信息由如下3部分组成:<br>IPAddress、UDP Port、NodeID。 </p>
+<p>KAD路由表按距离分成160个K桶(存放K个数据的桶)，分开存储。编号为i的路由表，存放着距离为[2^i, 2^(i+1))的K条路由信息。并且每个K桶内部信息存放位置是根据上次看到的时间顺序排列的，最早看到的放在头部，最后看到的放在尾部。因为网络中节点可能处于在线或者离线状态，而在之前经常在线的节点，我们需要访问的时候在线的概率更大，那么我们会优先访问它(尾部的节点)。</p>
+<h4 id="Kademilia远程RPC操作"><a href="#Kademilia远程RPC操作" class="headerlink" title="Kademilia远程RPC操作"></a>Kademilia远程RPC操作</h4><p>Kademlia 协议包括四种远程 RPC 操作：<br>PING、STORE、FIND_NODE、FIND_VALUE。</p>
+<p>· PING 操作的作用是探测一个节点，用以判断其是否仍然在线。   </p>
+<p>· STORE 操作的作用是通知一个节点存储一个<key,value>对，以便以后查询需要。   </p>
+<p>· FIND_NODE 操作使用一个 160bit 的 ID 作为参数。本操作的接受者返回它所知道的更 接近目标 ID 的 K 个节点的(IP address,UDP port,Node ID)信息。 这些节点的信息可以是从一个单独的 K 桶获得，也可以从多个 K 桶获得（如果最接近目 标 ID 的 K 桶未满）。不管是哪种情况，接受者都将返回 K 个节点的信息给操作发起者。但如 果接受者所有 K 桶的节点信息加起来也没有 K 个，则它会返回全部节点的信息给发起者。   </p>
+<p>· FIND_VALUE 操作和 FIND_NODE 操作类似，不同的是它只需要返回一个节点的(IP address,UDP port,Node ID)信息。如果本操作的接受者收到同一个 key 的 STORE 操作，则 会直接返回存储的 value 值。</p>
+<h4 id="更新K桶"><a href="#更新K桶" class="headerlink" title="更新K桶"></a>更新K桶</h4><p>当节点收到一个消息时，发送者的IP信息将被用来更新节点路由表。步骤如下：</p>
+<ol>
+<li>计算与节点之间的距离，并找到对应的K桶</li>
+<li>若K桶已经存有该节点信息，则将该节点信息移动到K桶队列尾部   </li>
+<li>若K桶不存在该节点信息则存在两种情况：<br>(1) K桶中节点数量小于K，则直接将该节点信息插入K桶队尾<br>(2) K桶中节点数量等于K，则向K桶队首的节点进行RPC PING操作，如果收到响应，则将队首节点信息移动至队尾，同时忽略还未插入的节点信息；若未收到响应，则移除队首节点信息，将将要插入的节点信息插入队尾</li>
+</ol>
+<h4 id="查找ID"><a href="#查找ID" class="headerlink" title="查找ID"></a>查找ID</h4><p>Kademilia查找节点的流程如下：</p>
+<ol>
+<li>计算节点之间的距离d，从第logd桶中选择a个节点，执行FIND_NODE操作。若第logd桶中不足a个节点，则从附近的桶中选择最接近的共a个节点。</li>
+<li>对于接收到FIND_NODE操作的节点，若自身就是所找的节点，则返回自身就是距离目标节点最近的节点。否则，计算自身与目标节点的距离，并以同样的方法在K桶寻找a个节点返回给查询节点。</li>
+<li>查询节点收到返回信息后，向返回的所有节点执行FIND_NODE操作，直到每一个分支都有节点响应自己是距离目标节点最近的。（为什么？为什么不是收到最近的响应就停止？）</li>
+<li>通过上述查找操作，查询节点将收到K个最接近目标节点的节点信息</li>
+</ol>
+<p>内容路由的查找(FIND_VALUE)过程类似。<br>查询节点与查询文件的收敛速度都为logn</p>
+<h4 id="节点加入网络或退出网络"><a href="#节点加入网络或退出网络" class="headerlink" title="节点加入网络或退出网络"></a>节点加入网络或退出网络</h4><p>冷加载：<br>节点加入网络前需要找到一个已经加入网络的节点（通常我们可以在web上找到别人提供的并持续维护的节点信息），将此节点放入到合适的K桶中，并对自身进行FIND_NODE操作，然后根据接收到的信息由近及远的逐步查询，完成节点对仍为空的节点的构建，同时将自身节点信息通知给其他节点。</p>
+<p>节点退出网络：<br>节点推出网络不需要做任何声明或操作，当其他节点更新K桶时，对退出节点执行PING操作而没有响应，就会将退出的节点抛弃。</p>
+<h4 id="节点的路由表生成"><a href="#节点的路由表生成" class="headerlink" title="节点的路由表生成"></a>节点的路由表生成</h4><p>以节点u为例，其路由表的生成过程如下:<br>1) 最初，u的路由表为一个单个的K桶，覆盖了整个160bit ID 空间   </p>
+<p>2) 当学习到新的节点信息后，则u会尝试把新节点的信息，根据其前缀值插入对应的K桶中。<br>①该桶没有满，则新节点直接插入这个K桶中;<br>②该K桶已经满了:如果该K桶覆盖范围包含了节点的ID，则把该K桶分裂为两个大小相同的新K桶，并对原桶内的节点信息按照新的K桶前缀值进行重新分配;如果该K桶覆盖范围没有包含节点的ID，则直接丢弃该新节点信息。   </p>
+<p>3) 上述过程不断重复，直到满足路由表的要求。达到距离近的节点的信息多、距离远的节点的信息少的结果，这样就保证了路由查询过程能快速收敛。</p>
+<h4 id="常见的对Kademilia的攻击"><a href="#常见的对Kademilia的攻击" class="headerlink" title="常见的对Kademilia的攻击"></a>常见的对Kademilia的攻击</h4><p>常见的Kademilia攻击包括女巫攻击、日蚀攻击、流失攻击和对抗路由攻击</p>
+<p>(1)日蚀攻击<br>如果一个节点在网络中能够自由选择它的ID，攻击者可以在网络中安放一些恶意节点，使得信息都必须经由恶意节点传递。那么这样一来，恶意节点就能够在网络中将一个或几个节点从网络中隐藏掉。</p>
+<p>(2)女巫攻击<br>在开放的对等网络里，攻击者可以假冒多个ID，用少数网络节点控制多个虚假身份。KAD 网络难以控制节点的数量，那么攻击者伪造大量虚假节点身份，就能控制部分网络。通常情况下可以通过消耗一定的系统和计算资源提高女巫攻击者的成本。当然，这也只能改善并不能杜绝。</p>
+<p>(3)流失攻击<br>攻击者拥有网络的一些节点，即恶意节点，这可能会在网络中引发大量流量流失，从而导致网络稳定性降低。</p>
+<p>(4)对抗路由攻击<br>恶意节点在收到查询指令后，不是按照KAD的要求返回距离Key最接近的网络节点，而是转移给同伙节点。同伙节点也做同样的操作，而不返回给查询节点所需要的信息，那么这样一来查询就会失效。我们发现，整个过程中必须将查询信息传递给恶意节点，这一攻击才能发动。那么我们可以在查询时设计算法并行地查询，并且每一条查询路径不相交。这样一来，只要并行查询的路径中有一条不碰到恶意节点，查询就能成功了。</p>
+<p>流失攻击与女巫攻击都没有能够完全防止的方法，提供提高大量生成节点ID的成本可以抑制。</p>
+<h4 id="S-K对于对抗路由攻击的防范方法——不相交路径查找"><a href="#S-K对于对抗路由攻击的防范方法——不相交路径查找" class="headerlink" title="S/K对于对抗路由攻击的防范方法——不相交路径查找"></a>S/K对于对抗路由攻击的防范方法——不相交路径查找</h4><p>在KAD协议中，我们进行一次查询时，会访问节点中的a个K-Bucket中的节点，这个K-Bucket 是距离我们需要查询的 Key 最近的。收到回复后，我们再进一步对返回的节点信息排序，选择前a 个节点继续迭代进行请求。很明显这样做的缺点是，一旦返回的其他节点信息是一组恶意节点，那么这个查询很可能就会失败了。</p>
+<p>为解决这个问题，S/K 提出的方案如下: 每次查询从d个不同的 Bucket选择k个节点。这d个Bucket并行查找，Bucket内部查找方式和KAD协议完全相同。这样一来，d条查找路径就能做到不相交。对于任意一个 Bucket，有失效的可能，但是只要d个Bucket中有一条查询到了所需要的信息，这个过程就完成了。</p>
+<p>通过不相交路径查找，能解决对抗路由攻击。S/K协议将 Kademlia协议改进后，针对常见的攻击，其安全性能大大提高了。</p>
+<h2 id="交换层"><a href="#交换层" class="headerlink" title="交换层"></a>交换层</h2><h3 id="BitSwap"><a href="#BitSwap" class="headerlink" title="BitSwap"></a>BitSwap</h3><h4 id="BitSwap简介"><a href="#BitSwap简介" class="headerlink" title="BitSwap简介"></a>BitSwap简介</h4><p>BitSwap是交换层中的主要协议，其主要功能是利用信用机制在节点之间进行数据交换。每个节点在下载的同时不断向其他节点上传已下载的数据。BitSwap和BitTorrent有很多相似之处，一个很大的不同之处在于BitSwap下载数据块不局限于同一个.torrent（只要哈希值相同，文件就一定相同，完全不碰撞的哈希怎么实现的？），BitSwap 协议中存在一个数据交换市场，这个市场包括各个节点想要获取的所有块数据，这些块数据可能来自文件系统中完全不相关的文件，同时这个市场是由 IPFS 网络中所有节点组成的。   </p>
+<h4 id="BitSwap数据块交换"><a href="#BitSwap数据块交换" class="headerlink" title="BitSwap数据块交换"></a>BitSwap数据块交换</h4><p>在 IPFS 中，数据的分发和交换使用 BitSwap 协议。BitSwap 协议主要负责两件事情:向其他节点请求需要的数据块列表 ( want_list)，以及为其他节点提供已有的数据块列表(have_list)。源码结构如下所示:</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">type</span> <span class="hljs-type">BitSwap</span> struct &#123;<br>ledgers map[<span class="hljs-type">NodeId</span>]<span class="hljs-type">Ledger</span>	// 节点账单   <br>active map[<span class="hljs-type">NodeId</span>] <span class="hljs-type">Peer</span>	// 当前已经连接的节点<br>need_list [<span class="hljs-type">Multihash</span>]		// 此节点需要的块数据校验列表<br>have_list [<span class="hljs-type">Multihash</span>]		// 此节点已收到的块数据校验列表<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>当我们需要向其他节点请求数据块或者为其他节点提供数据块时，都会发送 BitSwap Message 消息，其中主要包含了两部分内容: 想要的数据块列表(want_list)及对应数据块。消息使用 Protobuf 进行编码。</p>
+<p>BitSwap 协议能够激励节点去分享数据，即使这个节点暂时没有数据需求。IPFS 根据节点之间的数据收发建立了一个信用体系: 有借有还，再借不难。</p>
+<p>给其他节点发送数据可以增加信用值；<br>从其他节点接收数据将降低信用值。</p>
+<p>如果一个节点只接收数据而不分享数据，信用值就会降得很低而被其他节点忽略掉。简单来说，其实就是你乐于分享数据，其他节点也乐于发送数据给你;如果你不愿意分享，那么其他节点也不愿意给你数据。</p>
+<h4 id="信任策略"><a href="#信任策略" class="headerlink" title="信任策略"></a>信任策略</h4><p>根据上面的信用体系，BitSwap 可以采取不同的策略来实现，每一种策略都会对系统的整体性能产生不同的影响。策略的目标是:</p>
+<p>· 节点数据交换的整体性能和效率力求最高；<br>· 阻止空载节点“吃白食”现象，即不能够只下载数据不上传数据；<br>· 可以有效地防止一些攻击行为；<br>· 对信任节点建立宽松机制。</p>
+<p>IPFS 在白皮书中提供了一个可参考的策略机制(实际的实现可能有所变化)。每个节点根据和其他节点的收发数据，计算信用分和负债率( debtratio,r ):<br><code>r = bytes_sent / （bytes_recv + 1）</code><br>这个是负债率的计算公式，比如说 A 和 B 两个节点，现在 A 在往 B 发送数据，如果 A 往 B 发得越多，那对 A 来讲，B 的负债率就会很高。</p>
+<p>下面这个公式是发送率的计算公式，节点根据负债率计算出来和这个节点的数据发送率(P):<br><code>P(send|r) = 1 - ( 1/ ( 1 + exp(6 - 3r)))</code></p>
+<p>可以看到，如果r大于 2 时，发送率 P(send|r)会变得很小，从而 A 就不会继续给 B 发送数据。如果 B 只收不发，权重就会迅速降低，就不会有人给他发送数据包了。这么做的好处是使网络更高效，大家都有收有发，不断做数据交换，达到一个比较健康的状态。</p>
+<p>BitSwap 节点会记录下来和其他节点通信的账单(数据收发记录)。账单数据结构如下:</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">type</span> <span class="hljs-type">Ledger</span> struct &#123;<br>owner <span class="hljs-type">NodeId</span><br>partner <span class="hljs-type">NodeId</span><br>bytes_sent int<br>bytes_recv int<br>timestamp <span class="hljs-type">Timestamp</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这可以让节点追踪历史记录以及避免被篡改。当两个节点之间建立连接的时候，BitSwap 会相互交换账单信息，如果账单不匹配，则直接清除并重新记账。恶意节点会“有意失去”这些账单，从而期望清除自己的债务。其他交互节点会把这些都记下来，如果总是发生，伙伴节点可以自由地将其视为不当行为，拒绝交易。</p>
+<h3 id="BitTorrent"><a href="#BitTorrent" class="headerlink" title="BitTorrent"></a>BitTorrent</h3><p>IPFS和BitTorrent是两个独立的项目，但它们之间的技术和理念有一些交叉点。IPFS可以利用BitTorrent协议来实现更高效的文件传输，特别是在处理大型文件或大规模文件共享时。</p>
+<h4 id="BitTorrent中的术语"><a href="#BitTorrent中的术语" class="headerlink" title="BitTorrent中的术语"></a>BitTorrent中的术语</h4><p>· torrent: 它是服务器接收的元数据文件 (通常结尾是.torrent)。这个文件记录了下载数据的信息 (但不包括文件自身)，例如文件名、文件大小、文件的哈希值，以及 Tracker 的 URL 地址。   </p>
+<p>· tracker :是指互联网上负责协调 BitTorrent 客户端行动的服务器。当你打开一个 torrent 时，你的机器连接 tracker，并且请求一个可以接触的peers 列表。在传输过程中，客户端将会定期向 tracker 提交自己的状态。tracker 的作用仅是帮助 peers 相互达成连接，而不参与文件本身的传输。   </p>
+<p>· peer : peer 是互联网上的另一台可以连接并传输数据的计算机。通常情况下，peer 没有完整的文件。peer 之间相互下载、上传。  </p>
+<p>· seed:有一个特定 torrent 完整拷贝的计算机称为 seed。文件初次发布时需要一个 seed 进行初次共享。</p>
+<p>· swarm:连接一个 torrent 的所有设备群组。   </p>
+<p>· Chocking: Chocking 阻塞是一种临时的拒绝上传策略，虽然上传停止了，但是下载仍然继续。BitTorrent 网络下载需要每个 peer 相互上传，对于不合作的 peer，会采取临时的阻断策略。   </p>
+<p>· Pareto 效率: 帕累托效率 ( Pareto efhicieney) 是指资源分配已经到了物尽其用的阶段，对任意一个个体进一步提升效率只会导致其他个体效率下降。此时说明系统已经达到最优状态了。   </p>
+<p>· 针锋相对 (Tit-fot-Tat): 又叫一报还一报，是博弈论中一个最简单的策略。以合作开局，此后就采取以其人之道还治其人之身的策略。它强调的是永远不先背叛对方，除非自己被背叛。在 BitTorrent 中表现为，Peer 给自己贡献多少下载速度，那么也就贡献多少上传速度给他。</p>
+<h4 id="BitTorent内容发布"><a href="#BitTorent内容发布" class="headerlink" title="BitTorent内容发布"></a>BitTorent内容发布</h4><p>当某个文件被首次发布，seed会生成一个.torrent文件，其中主要包含tracker服务器url，文件名，文件大小。之后将这个文件向tracker服务器注册，服务器将保存文件信息和seed的连接方式，而文件本身保存在seed上。此时seed就将等到其他peer通过seed分享的.torrent文件找到tracker，然后通过tracker获得seed的连接方式，并请求与seed连接。</p>
+<h4 id="分块交换"><a href="#分块交换" class="headerlink" title="分块交换"></a>分块交换</h4><p>大多数peer是没有完整的拷贝节点的（只需要部分文件）。为了跟踪每个节点已经下载的信息有哪些，BitTorrent 把文件切割成大小为 256KB 的小片。每一个下载者需要向他的 peer 提供其拥有的片。为了确保文件完整传输，这些已经下载的片段必须通过 SHA-1 算法验证。只有当片段被验证是完整的时，才会通知其他 peer 自己拥有这个片段，可以提供上传。</p>
+<h4 id="片段选择算法"><a href="#片段选择算法" class="headerlink" title="片段选择算法"></a>片段选择算法</h4><p>面我们发现，BitTorrent 内容分享的方式非常简单实用。但是，直觉上我们会发现如何合理地选择下载片段的顺序，对提高整体的速度和性能非常重要。如果某片段仅在极少数 peer 上有备份，则这些 peer 下线了，网络上就不能找到备份了，所有 peer 都不能完成下载。针对这样的问题，BitTorrent 提供了一系列片段选择的策略：   </p>
+<p>· 优先完成单一片段: 如果请求了某一片段的子片段，那么本片段会优先被请求。这样做是为了尽可能先完成一个完整的片段，避免出现每一个片段都请求了同一个子片段，但是都没有完成的情况。</p>
+<p>· 优先选择稀缺片段: 选择新的片段时，优先选择下载全部 peer 中拥有者最少的片段。拥有者最少的片段意味着是大多数 peer 最希望得到的片段。这样也就降低了两种风险，其一，某个 peer 正在提供上传，但是没有人下载(因为大家都有了这一片段); 其二，拥有稀缺片段的 peer 停止上传，所有 peer 都不能得到完整的文件。    </p>
+<p>· 第一个片段随机选择: 下载刚开始进行的时候，并不需要优先最稀缺的。此时，下载者没有任何片断可供上传，所以，需要尽快获取一个完整的片断。而最少的片断通常只有某一个 peer 拥有，所以，它可能比多个 peer 都拥有的那些片断下载得慢。因此，第一个片断是随机选择的，直到第一个片断下载完成，才切换到“优先选择稀缺片段”的策略。    </p>
+<p>· 结束时取消子片段请求: 有时候，遇到从一个速率很慢的 peer 请求一个片断的情况，peer 会向它的所有的 peer 都发送对某片断的子片断的请求，一旦某些节点发送的子片断到了，那么就会向其他 peer 发送取消消息，取消对这些子片断的请求，以避免浪费带宽。</p>
+<h2 id="对象层"><a href="#对象层" class="headerlink" title="对象层"></a>对象层</h2><p>IPFS 使用Merkle DAG 技术构建了一个有向无环图数据结构，用来存储对象数据。这也是著名的版本管理软件 Git 所使用的数据结构。Merkle DAG 为 IPFS 提供了很多有用的属性，包括:</p>
+<p>· 内容可寻址:所有内容由多重哈希校验并唯一标识。<br>· 防止篡改:所有内容都通过哈希验证，如果数据被篡改或损坏，在 IPFS网络中将会被检测到。<br>· 重复数据删除:保存完全相同内容的所有对象都是相同的，并且只存储1次。这对于索引对象特别有用。</p>
+<p>从对象格式上，Merkle Tree 的叶子是数据块(例如，文件、交易)的哈希值。非叶节点是其对应子节点串联字符串的哈希。Merkle DAG 的节点包括两个部分，Data 和 Link ; Data 为二进制数据，Link 包含 Name、Hash 和 Size 这3个部分。从数据结构上看，Merkle DAG 是 Merkle Tree 更普适的情况，换句话说，Merkle Tree 是特殊的 Merkle DAG。<br>从功能上看，Merkle Tree通常用于验证数据完整性，而Merkle DAG大多用于文件系统。</p>
+<h3 id="Merkle-DAG的功能"><a href="#Merkle-DAG的功能" class="headerlink" title="Merkle DAG的功能"></a>Merkle DAG的功能</h3><p>Merkle DAG 在功能上与 Merkle Tree 有很大不同，上面我们提到 Merkle Tree 主要是为了验证，例如验证数字签名，以及比特币 Merkle Proof。而对于Merkle DAG，它的目的有如下 3 个。<br>· 内容寻址: 使用多重 Hash 来唯一识别一个数据块的内容。<br>· 防篡改: 可以方便地检查 Hash 值来确认数据是否被篡改。<br>· 去重: 由于内容相同的数据块 Hash 值是相同的，很容易去掉重复的数据，节省存储空间。</p>
+<h3 id="数据对象格式"><a href="#数据对象格式" class="headerlink" title="数据对象格式"></a>数据对象格式</h3><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">type</span> <span class="hljs-type">IPFSObject</span> struct &#123;<br>	links []<span class="hljs-type">IPFSLink</span><br>	data []byte<br>&#125;<br><br><span class="hljs-keyword">type</span> <span class="hljs-type">IPFSLink</span> struct &#123;<br>	<span class="hljs-type">Name</span> string<br>	<span class="hljs-type">Hash</span> <span class="hljs-type">Multihash</span><br>	<span class="hljs-type">Size</span> int<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在IPFS 中定义了 Merkle DAG 的对象格式。IPFS Object 是存储结构，IPFS 会限制每个数据分块大小在 256KB 以内。在 IPFS Object 对象里我们保存有两个部分，一个是 Link，用于保存其他的分块数据的引用，另一个是 data，为本对象内容。Link 主要包括 3 个部分，分别是 Link 的名字、Hash和 Size。在这里 Link 只是对一个IPFS Object 的引用，它不再重复存储一个 IPFS 对象了。</p>
+<h2 id="文件层"><a href="#文件层" class="headerlink" title="文件层"></a>文件层</h2><p>IPFS定义了一组与git相似的对象，用于对版本化文件系统建模。<br>Block（块），一个可变大小的数据块<br>List，一个块或其他列表的集合<br>Tree，块，列表，其他树的集合<br>Commit，版本快照</p>
+<h3 id="blob"><a href="#blob" class="headerlink" title="blob"></a>blob</h3><p>Blob 对象包含一个可寻址的数据单元，表示一个文件。当文件比较小，不足以大到需要分片时，就以 Blob 对象的形式存储于 IPFS 网络之中，如下所示:<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>	<span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;some data here&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-comment">//Blobs无links</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure></p>
+<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><p>List 对象由多个连接在一起的 Blob 组成，通常存储的是一个大文件。从某种意义上说，List 的功能更适用于数据块互相连接的文件系统。由于 List可以包含其他 List，所以可能形成包括链接列表和平衡树在内的拓扑结构，如下所示:<br><figure class="highlight stan"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs stan">&#123;<br><span class="hljs-title">data</span><span class="hljs-string">&quot;: [&quot;</span>blob<span class="hljs-string">&quot;，&quot;</span>list<span class="hljs-string">&quot;，&quot;</span>blob<span class="hljs-string">&quot;],</span><br><span class="hljs-string">&quot;</span>links<span class="hljs-string">&quot;: [</span><br><span class="hljs-string">&#123;&quot;</span>hash<span class="hljs-string">&quot;: &quot;</span>XLYkgq61DYaQ8Nhkcqyu7rLcnSa7dSHQ16x<span class="hljs-string">&quot;, &quot;</span><span class="hljs-built_in">size</span><span class="hljs-string">&quot;: 189458&#125;,</span><br><span class="hljs-string">&#123;&quot;</span>hash<span class="hljs-string">&quot;:&quot;</span>XLHBNmRQ5sJJrdMPuu48pzeyTtRo39tNDR5<span class="hljs-string">&quot;, &quot;</span><span class="hljs-built_in">size</span><span class="hljs-string">&quot;: 19441&#125;,</span><br><span class="hljs-string">&#123;&quot;</span>hash<span class="hljs-string">&quot;:&quot;</span>XLWVQDqxo9Km9zLyquoC9gAP8CLlgWnHZ7z<span class="hljs-string">&quot;, &quot;</span><span class="hljs-built_in">size</span><span class="hljs-string">&quot;: 5286&#125;</span><br><span class="hljs-string">]</span><br><span class="hljs-string">&#125;</span><br></code></pre></td></tr></table></figure></p>
+<h3 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h3><p>在IPFS 中，Tree 对象与 Git 的 Tree 类似: 它代表一个目录，或者一个名字到哈希值的映射表。哈希值表示 Blob、List、其他的 Tree 或 Commit，结构如下所示:<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs prolog">&#123;<br><span class="hljs-string">&quot;data&quot;</span>:[<span class="hljs-string">&quot;blob&quot;</span>, <span class="hljs-string">&quot;list&quot;</span>, <span class="hljs-string">&quot;blob&quot;</span>],<br><span class="hljs-string">&quot;links&quot;</span>:[<br>&#123;<span class="hljs-string">&quot;hash&quot;</span>:<span class="hljs-string">&quot;XLYkgq61DYaQ8Nhkcqyu7rLcnSa7dsHQ16x&quot;</span>, <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;less&quot;</span>, <span class="hljs-string">&quot;size&quot;</span>: <span class="hljs-number">189458</span> &#125;,<br>&#123;<span class="hljs-string">&quot;hash&quot;</span>:<span class="hljs-string">&quot;XLHBNmRQ5sJJrdMPuu48pzeyTtRo39tNDR5&quot;</span>,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;script&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>: <span class="hljs-number">19441</span>&#125;,<br>&#123;<span class="hljs-string">&quot;hash&quot;</span>:<span class="hljs-string">&quot;XLWVQDqxo9Km9zLyquoC9gAP8CL1gWnHZ7z&quot;</span>,<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;template&quot;</span>,<span class="hljs-string">&quot;size&quot;</span>: <span class="hljs-number">5286</span>&#125;<br>]<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h3><p>在IPFS 中，Commit 对象代表任何对象在版本历史记录中的一个快照。它与 Git 的 Commit 类似，但它可以指向任何类型的对象 ( Git 中只能指向 Tree 或其他 Commit)。<br>Commit 对象代表一个对象在历史版本中的一个特定快照。两个不同的Commit 之间互相比较对象数据 (和子对象数据)，可以揭露出两个不同版本文件系统的区别。IPFS 可以实现 Git 版本控制工具的所有功能，同时也可以兼容并改进 Git。</p>
+<h3 id="对象查询优化"><a href="#对象查询优化" class="headerlink" title="对象查询优化"></a>对象查询优化</h3><p>基于路径的访问需要遍历整个对象图，检索每个对象需要在 DHT 中查找它的 Key 值，连接到节点并检索对应的数据块。这是一笔相当大的性能开销，特别是在查找的路径中具有多个子路径时。IPFS 充分考虑了这一点，并设计了如下的方式来提高性能。</p>
+<p>· 树缓存 ( tree cache):由于所有的对象都是哈希寻址的，它们可以被无限地缓存。另外，Tree 一般比较小，所以比起 Blob，IPFS 会优先缓存Tree。   </p>
+<p>· 扁平树 ( fattened tree): 对于任何给定的 Tree，一个特殊的扁平树可以构建一个链表，所有对象都可以从这个 Tree 中访问得到。在扁平树中name 就是一个从原始 Tree 分离的路径，用斜线分隔。</p>
+<h2 id="命名层"><a href="#命名层" class="headerlink" title="命名层"></a>命名层</h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>IPFS协议及其相关协议</div>
+      <div>https://1303-yzym.github.io/2024/05/18/IPFS协议及其相关协议/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>YZYM</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/13/BitTorrent%E5%8D%8F%E8%AE%AE/" title="BitTorrent协议">
+                        <span class="hidden-mobile">BitTorrent协议</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"ITT1JWc1ZucGHzHpMvFxsUuT-gzGzoHsz","appKey":"2aFpjBFkb04qkRfzrAQlXiyB","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="https://music.163.com/outchain/player?type=1&id=166646490&auto=1&height=32"></iframe>
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  var relativeDate = function() {
+    var updatedTime = document.getElementById('updated-time');
+    if (updatedTime) {
+      var text = updatedTime.textContent;
+      var reg = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})/;
+      var matchs = text.match(reg);
+      if (matchs) {
+        var relativeTime = moment(matchs[0]).fromNow();
+        updatedTime.textContent = text.replace(reg, relativeTime);
+      }
+      updatedTime.style.display = '';
+    }
+  };
+  Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/moment.min.js', function() {
+    if (!'zh-cn'.startsWith('en')) {
+      Fluid.utils.createScript('https://lib.baomitu.com/moment.js/2.29.4/locale/zh-cn.min.js', function() {
+        relativeDate();
+      });
+    } else {
+      relativeDate();
+    }
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
