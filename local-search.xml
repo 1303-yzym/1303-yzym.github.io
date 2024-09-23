@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>带权图单源最短路径求解——Dijkstra算法及实现</title>
+    <link href="/2024/09/23/%E5%B8%A6%E6%9D%83%E5%9B%BE%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E6%B1%82%E8%A7%A3%E2%80%94%E2%80%94Dijkstra%E7%AE%97%E6%B3%95%E5%8F%8A%E5%AE%9E%E7%8E%B0/"/>
+    <url>/2024/09/23/%E5%B8%A6%E6%9D%83%E5%9B%BE%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E6%B1%82%E8%A7%A3%E2%80%94%E2%80%94Dijkstra%E7%AE%97%E6%B3%95%E5%8F%8A%E5%AE%9E%E7%8E%B0/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="\assets\js\Meting.min.js"></script><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>Dijkstra是一种贪心思想的算法实现，即追求局部最优进而求解全局最优。<br>以下的流程，所给的带权图将以邻接矩阵arcs[][]的形式存储，arcs[i][j]表示有向边<i，j>的权值，若两结点间无直接的边相连，则距离表示为-1。<br>除举证arsc[][]外，还需构造三个辅助数组：   </p><ul><li>bool[] final<blockquote><p>标记各点是否已经找到最短路径</p></blockquote></li><li>int[] dust<blockquote><p>记录当前各点到源的最小距离</p></blockquote></li><li>int[] path<blockquote><p>记录到达各点的最短路径的目标点的前一个点的下标，通过path[]就能够还原出最短路径</p></blockquote></li></ul><h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><ol><li><p>初始化dust[],设源点为0(这里只是举例，实际上是多少都无所谓，只是初始化流程稍有不同)，dist[]=arcs[0][],这表示与源直接连接的点的距离。初始化path[i]=i。</p></li><li><p>遍历dist[],找到min(dist[i])，修改final[i]=true，path[i]=0(排除final[i]=true，和dist[i]=-1的值)</p></li><li><p>遍历arcs[i][]，若存在dist[j]&gt;dist[i]+arsc[i][j]（-1视为无限大），修改dist[j]=dist[i]+arsc[i][j]，path[j]=i</p></li><li><p>重复二、三步n-1次后算法结束。</p></li></ol><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>// todo，乏了，回宫……</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>算法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+      <tag>数据结构</tag>
+      
+      <tag>图</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>计算机网络-物理层</title>
     <link href="/2024/09/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/"/>
     <url>/2024/09/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%89%A9%E7%90%86%E5%B1%82/</url>
