@@ -16,26 +16,24 @@
   <meta name="author" content="YZYM">
   <meta name="keywords" content="">
   
-    <meta name="description" content="洛神赋·曹植 黄初三年，余朝京师，还济洛川。古人有言：斯水之神，名曰宓妃。感宋玉对楚王神女之事，遂作斯赋。其辞曰：余从京域，言归东藩，背伊阙，越轘辕，经通谷，陵景山。日既西倾，车殆马烦。尔乃税驾乎蘅皋，秣驷乎芝田，容与乎阳林，流眄乎洛川。于是精移神骇，忽焉思散。俯则未察，仰以殊观。睹一丽人，于岩之畔。乃援御者而告之曰：“尔有觌于彼者乎？彼何人斯，若此之艳也！”御者对曰：“臣闻河洛之神，名曰宓妃。然">
+    <meta name="description" content="算法思想及数据结构&emsp;&emsp;Floyd算法的基本思想是，把初始直接相连的通路中，把图中的每一个节点都尝试加入到各对点的通路当中，尝试是否能够得到更短的通路。若是，则保留这个通路，如此整个图中的点之间的通路距离就会在遍历中保持缩减的趋势最终达到最优。 arsc [][]int &#x2F;&#x2F;图的邻接矩阵由于递推的过程可直接对邻接矩阵做处理，因此不需要其他的辅助元素。 算法流程 x &#x3D; 0，对于所">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛神赋·曹植">
-<meta property="og:url" content="https://1303-yzym.github.io/2023/12/24/%E6%B4%9B%E7%A5%9E%E8%B5%8B%C2%B7%E6%9B%B9%E6%A4%8D/index.html">
+<meta property="og:title" content="所有顶点间最短路径——Floyd算法">
+<meta property="og:url" content="https://1303-yzym.github.io/2024/09/24/%E6%89%80%E6%9C%89%E9%A1%B6%E7%82%B9%E9%97%B4%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E2%80%94%E2%80%94Floyd%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="YZYM">
-<meta property="og:description" content="洛神赋·曹植 黄初三年，余朝京师，还济洛川。古人有言：斯水之神，名曰宓妃。感宋玉对楚王神女之事，遂作斯赋。其辞曰：余从京域，言归东藩，背伊阙，越轘辕，经通谷，陵景山。日既西倾，车殆马烦。尔乃税驾乎蘅皋，秣驷乎芝田，容与乎阳林，流眄乎洛川。于是精移神骇，忽焉思散。俯则未察，仰以殊观。睹一丽人，于岩之畔。乃援御者而告之曰：“尔有觌于彼者乎？彼何人斯，若此之艳也！”御者对曰：“臣闻河洛之神，名曰宓妃。然">
+<meta property="og:description" content="算法思想及数据结构&emsp;&emsp;Floyd算法的基本思想是，把初始直接相连的通路中，把图中的每一个节点都尝试加入到各对点的通路当中，尝试是否能够得到更短的通路。若是，则保留这个通路，如此整个图中的点之间的通路距离就会在遍历中保持缩减的趋势最终达到最优。 arsc [][]int &#x2F;&#x2F;图的邻接矩阵由于递推的过程可直接对邻接矩阵做处理，因此不需要其他的辅助元素。 算法流程 x &#x3D; 0，对于所">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img1.baidu.com/it/u=47290751,1236951627&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=375&amp;h=500">
-<meta property="article:published_time" content="2023-12-24T14:47:20.000Z">
-<meta property="article:modified_time" content="2024-05-08T05:33:29.815Z">
+<meta property="article:published_time" content="2024-09-24T04:13:59.000Z">
+<meta property="article:modified_time" content="2024-09-24T11:30:24.529Z">
 <meta property="article:author" content="YZYM">
-<meta property="article:tag" content="古诗文">
-<meta property="article:tag" content="曹植">
-<meta property="article:tag" content="美文">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="图">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://img1.baidu.com/it/u=47290751,1236951627&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=375&amp;h=500">
   
   
   
-  <title>洛神赋·曹植 - YZYM</title>
+  <title>所有顶点间最短路径——Floyd算法 - YZYM</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -234,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="洛神赋·曹植"></span>
+            <span id="subtitle" data-typed-text="所有顶点间最短路径——Floyd算法"></span>
           
         </div>
 
@@ -245,8 +243,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-24 22:47" pubdate>
-          2023年12月24日 晚上
+        <time datetime="2024-09-24 12:13" pubdate>
+          2024年9月24日 中午
         </time>
       </span>
     
@@ -257,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          939 字
+          371 字
         
       </span>
     
@@ -268,7 +266,7 @@
         
         
         
-          8 分钟
+          4 分钟
         
       </span>
     
@@ -313,12 +311,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">洛神赋·曹植</h1>
+            <h1 id="seo-header">所有顶点间最短路径——Floyd算法</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-05-08T13:33:29+08:00
+                    本文最后更新于 2024-09-24T19:30:24+08:00
                   
                   
 
@@ -328,9 +326,14 @@
             
               <div class="markdown-body">
                 
-                <h1 id="洛神赋"><a href="#洛神赋" class="headerlink" title="洛神赋"></a>洛神赋</h1><p>·曹植</p>
-<p>黄初三年，余朝京师，还济洛川。古人有言：斯水之神，名曰宓妃。感宋玉对楚王神女之事，遂作斯赋。其辞曰：<br>余从京域，言归东藩，背伊阙，越轘辕，经通谷，陵景山。日既西倾，车殆马烦。尔乃税驾乎蘅皋，秣驷乎芝田，容与乎阳林，流眄乎洛川。<br>于是精移神骇，忽焉思散。俯则未察，仰以殊观。睹一丽人，于岩之畔。乃援御者而告之曰：“尔有觌于彼者乎？彼何人斯，若此之艳也！”御者对曰：“臣闻河洛之神，名曰宓妃。然则君王之所见也，无乃是乎！其状若何？臣愿闻之。”<br>余告之曰：其形也，翩若惊鸿，婉若游龙。荣曜秋菊，华茂春松。髣髴兮若轻云之蔽月，飘飖兮若流风之回雪。远而望之，皎若太阳升朝霞29；迫而察之，灼若芙蕖出渌波。秾纤得中，修短合度。肩若削成，腰如约素。延颈秀项，皓质呈露。芳泽无加，铅华弗御。云髻峨峨，修眉联娟。丹唇外朗，皓齿内鲜。明眸善睐，靥辅承权。瓌姿艳逸，仪静体闲。柔情绰态，媚于语言。奇服旷世，骨像应图。披罗衣之璀粲兮，珥瑶碧之华琚。戴金翠之首饰，缀明珠以耀躯。践远游之文履，曳雾绡之轻裾。微幽兰之芳蔼兮，步踟蹰于山隅。<br>于是忽焉纵体，以遨以嬉。左倚采旄，右荫桂旗。攘皓腕于神浒兮，采湍濑之玄芝。余情悦其淑美兮，心振荡而不怡。无良媒以接欢兮，托微波而通辞。愿诚素之先达，解玉佩而要之。嗟佳人之信修，羌习礼而明诗。抗琼珶以和予兮，指潜川而为期。执眷眷之款实兮，惧斯灵之我欺。感交甫之弃言兮，怅犹豫而狐疑。收和颜而静志兮，申礼防以自持。<br>于是洛灵感焉，徙倚彷徨。神光离合，乍阴乍阳。竦轻躯以鹤立，若将飞而未翔。践椒途之郁烈，步蘅薄而流芳。超长吟以永慕兮，声哀厉而弥长。<br>尔乃众灵杂沓，命俦啸侣。或戏清流，或翔神渚，或采明珠，或拾翠羽。从南湘之二妃，携汉滨之游女。叹匏瓜之无匹，咏牵牛之独处。扬轻袿之猗靡，翳修袖以延伫。体迅飞凫，飘忽若神。凌波微步，罗袜生尘。动无常则，若危若安；进止难期，若往若还。转眄流精，光润玉颜。含辞未吐，气若幽兰。华容婀娜，令我忘餐。<br>于是屏翳收风，川后静波。冯夷鸣鼓，女娲清歌。腾文鱼以警乘，鸣玉銮以偕逝。六龙俨其齐首，载云车之容裔。鲸鲵踊而夹毂，水禽翔而为卫。于是越北沚，过南冈，纡素领，回清扬。动朱唇以徐言，陈交接之大纲。恨人神之道殊兮，怨盛年之莫当。抗罗袂以掩涕兮，泪流襟之浪浪。悼良会之永绝兮，哀一逝而异乡。无微情以效爱兮，献江南之明珰。虽潜处于太阴，长寄心于君王。忽不悟其所舍，怅神宵而蔽光。<br>于是背下陵高，足往心留。遗情想像，顾望怀愁。冀灵体之复形，御轻舟而上溯。浮长川而忘反，思绵绵而增慕。夜耿耿而不寐，沾繁霜而至曙。命仆夫而就驾，吾将归乎东路。揽騑辔以抗策，怅盘桓而不能去。</p>
-<p><img src="https://img1.baidu.com/it/u=47290751,1236951627&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=375&amp;h=500" srcset="/img/myloading.gif" lazyload alt="洛神赋"><br><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B4%9B%E7%A5%9E%E8%B5%8B/5572?fr=ge_ala" title="百度百科：洛神赋·曹植">百度百科：《洛神赋》·曹植</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1HN4y1N7w5/?share_source=copy_web&amp;vd_source=5eb7dd2183f6f6a92616e71bcb39116c" title="【中文系小伙走火入魔，在洛河里背诵《洛神赋》】 ">有山朗读：《洛神赋》</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mT411w7Qe/?share_source=copy_web&amp;vd_source=5eb7dd2183f6f6a92616e71bcb39116c" title="【【戴建业】只听过“飘飖兮若流风之回雪”？《洛神赋》到底讲了什么？】 ">【戴建业】洛神赋赏析</a></p>
+                <h1 id="算法思想及数据结构"><a href="#算法思想及数据结构" class="headerlink" title="算法思想及数据结构"></a>算法思想及数据结构</h1><p>&emsp;&emsp;Floyd算法的基本思想是，把初始直接相连的通路中，把图中的每一个节点都尝试加入到各对点的通路当中，尝试是否能够得到更短的通路。若是，则保留这个通路，如此整个图中的点之间的通路距离就会在遍历中保持缩减的趋势最终达到最优。</p>
+<p>arsc [][]int //图的邻接矩阵<br>由于递推的过程可直接对邻接矩阵做处理，因此不需要其他的辅助元素。</p>
+<h1 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h1><ol>
+<li>x = 0，对于所有顶点arsc[i][j]，若存在arsc[i][j] &gt; arsc[i][x] + arsc[x][j]，则更新arsc[i][j]。</li>
+<li>x自增，循环n次。</li>
+</ol>
+<h1 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h1><p>$O(|V|^3) $<br>同等的复杂度下可以对每个顶点使用dijskra算法达到同样的效果。</p>
+<h1 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs GO"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-comment">// emmmmm，就是一个三重循环就结束了</span><br><span class="hljs-comment">// 由于代码紧凑，操作简单，虽然floyd算法的时间复杂度很高，但对于中型的图还是效率很高的。</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">floyd</span><span class="hljs-params">(arsc [][]<span class="hljs-type">int</span>)</span></span> [][]<span class="hljs-type">int</span> &#123;<br>	n := <span class="hljs-built_in">len</span>(arsc)<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; n; i++ &#123;<br>		<span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; n; j++ &#123;<br>			<span class="hljs-keyword">for</span> k := <span class="hljs-number">0</span>; k &lt; n; k++ &#123;<br>				<span class="hljs-keyword">if</span> arsc[j][k] &gt; arsc[j][i]+arsc[i][k] &#123;<br>					arsc[j][k] = arsc[j][i] + arsc[i][k]<br>				&#125;<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> arsc<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	arsc := [][]<span class="hljs-type">int</span>&#123;<br>		&#123;<span class="hljs-number">0</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0</span>, <span class="hljs-number">7</span>&#125;,<br>		&#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>&#125;,<br>		&#123;<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>&#125;,<br>		&#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;,<br>	&#125;<br>	fmt.Println(floyd(arsc))<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -349,7 +352,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%8F%A4%E8%AF%97%E6%96%87/" class="category-chain-item">古诗文</a>
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
   
   
 
@@ -364,11 +367,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8F%A4%E8%AF%97%E6%96%87/" class="print-no-link">#古诗文</a>
+        <a href="/tags/%E7%AE%97%E6%B3%95/" class="print-no-link">#算法</a>
       
-        <a href="/tags/%E6%9B%B9%E6%A4%8D/" class="print-no-link">#曹植</a>
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="print-no-link">#数据结构</a>
       
-        <a href="/tags/%E7%BE%8E%E6%96%87/" class="print-no-link">#美文</a>
+        <a href="/tags/%E5%9B%BE/" class="print-no-link">#图</a>
       
     </div>
   
@@ -380,8 +383,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>洛神赋·曹植</div>
-      <div>https://1303-yzym.github.io/2023/12/24/洛神赋·曹植/</div>
+      <div>所有顶点间最短路径——Floyd算法</div>
+      <div>https://1303-yzym.github.io/2024/09/24/所有顶点间最短路径——Floyd算法/</div>
     </div>
     <div class="license-meta">
       
@@ -393,7 +396,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月24日</div>
+          <div>2024年9月24日</div>
         </div>
       
       
@@ -425,18 +428,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/25/%E7%A5%AD%E9%B3%84%E9%B1%BC%E6%96%87/" title="祭鳄鱼文">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">祭鳄鱼文</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/23/%E8%AF%97%E7%AF%8746%E7%9A%84%E7%A7%98%E5%AF%86/" title="诗篇46的秘密">
-                        <span class="hidden-mobile">诗篇46的秘密</span>
+                      <a href="/2024/09/23/%E5%B8%A6%E6%9D%83%E5%9B%BE%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E6%B1%82%E8%A7%A3%E2%80%94%E2%80%94Dijkstra%E7%AE%97%E6%B3%95%E5%8F%8A%E5%AE%9E%E7%8E%B0/" title="带权图单源最短路径求解——Dijkstra算法及实现">
+                        <span class="hidden-mobile">带权图单源最短路径求解——Dijkstra算法及实现</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
