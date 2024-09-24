@@ -16,20 +16,22 @@
   <meta name="author" content="YZYM">
   <meta name="keywords" content="">
   
-    <meta name="description" content="算法数据结构Dijkstra是一种贪心思想的算法实现，即追求局部最优进而求解全局最优。以下的流程，所给的带权图将以邻接矩阵arcs[][]的形式存储，arcs[i][j]表示有向边的权值，若两结点间无直接的边相连，则距离表示为-1。除举证arsc[][]外，还需构造三个辅助数组：     bool[] final 标记各点是否已经找到最短路径   int[] dust 记录当前各点到源的最小距离">
+    <meta name="description" content="算法数据结构Dijkstra是一种贪心思想的算法实现，即追求局部最优进而求解全局最优。以下的流程，所给的带权图将以邻接矩阵arcs[][]的形式存储，arcs[i][j]表示有向边的权值，若两结点间无直接的边相连，则距离表示为-1（即用-1来表示不可达）。除举证arsc int[][]外，还需构造三个辅助数组：     final []bool 标记各点是否已经找到最短路径   dust []in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="带权图单源最短路径求解——Dijkstra算法及实现">
 <meta property="og:url" content="https://1303-yzym.github.io/2024/09/23/%E5%B8%A6%E6%9D%83%E5%9B%BE%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E6%B1%82%E8%A7%A3%E2%80%94%E2%80%94Dijkstra%E7%AE%97%E6%B3%95%E5%8F%8A%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="YZYM">
-<meta property="og:description" content="算法数据结构Dijkstra是一种贪心思想的算法实现，即追求局部最优进而求解全局最优。以下的流程，所给的带权图将以邻接矩阵arcs[][]的形式存储，arcs[i][j]表示有向边的权值，若两结点间无直接的边相连，则距离表示为-1。除举证arsc[][]外，还需构造三个辅助数组：     bool[] final 标记各点是否已经找到最短路径   int[] dust 记录当前各点到源的最小距离">
+<meta property="og:description" content="算法数据结构Dijkstra是一种贪心思想的算法实现，即追求局部最优进而求解全局最优。以下的流程，所给的带权图将以邻接矩阵arcs[][]的形式存储，arcs[i][j]表示有向边的权值，若两结点间无直接的边相连，则距离表示为-1（即用-1来表示不可达）。除举证arsc int[][]外，还需构造三个辅助数组：     final []bool 标记各点是否已经找到最短路径   dust []in">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img0.baidu.com/it/u=3627875995,4240375248&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=570">
 <meta property="article:published_time" content="2024-09-23T09:33:00.000Z">
-<meta property="article:modified_time" content="2024-09-23T09:58:26.644Z">
+<meta property="article:modified_time" content="2024-09-24T02:52:55.303Z">
 <meta property="article:author" content="YZYM">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="数据结构">
 <meta property="article:tag" content="图">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img0.baidu.com/it/u=3627875995,4240375248&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=570">
   
   
   
@@ -255,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          314 字
+          618 字
         
       </span>
     
@@ -266,7 +268,7 @@
         
         
         
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -316,7 +318,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-09-23T17:58:26+08:00
+                    本文最后更新于 2024-09-24T10:52:55+08:00
                   
                   
 
@@ -326,32 +328,33 @@
             
               <div class="markdown-body">
                 
-                <h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>Dijkstra是一种贪心思想的算法实现，即追求局部最优进而求解全局最优。<br>以下的流程，所给的带权图将以邻接矩阵arcs[][]的形式存储，arcs[i][j]表示有向边<i，j>的权值，若两结点间无直接的边相连，则距离表示为-1。<br>除举证arsc[][]外，还需构造三个辅助数组：   </p>
+                <h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>Dijkstra是一种贪心思想的算法实现，即追求局部最优进而求解全局最优。<br>以下的流程，所给的带权图将以邻接矩阵arcs[][]的形式存储，arcs[i][j]表示有向边<i，j>的权值，若两结点间无直接的边相连，则距离表示为-1（即用-1来表示不可达）。<br>除举证arsc int[][]外，还需构造三个辅助数组：   </p>
 <ul>
-<li>bool[] final<blockquote>
+<li>final []bool<blockquote>
 <p>标记各点是否已经找到最短路径</p>
 </blockquote>
 </li>
-<li>int[] dust<blockquote>
+<li>dust []int<blockquote>
 <p>记录当前各点到源的最小距离</p>
 </blockquote>
 </li>
-<li>int[] path<blockquote>
+<li>path []int<blockquote>
 <p>记录到达各点的最短路径的目标点的前一个点的下标，通过path[]就能够还原出最短路径</p>
 </blockquote>
 </li>
 </ul>
 <h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><ol>
-<li><p>初始化dust[],设源点为0(这里只是举例，实际上是多少都无所谓，只是初始化流程稍有不同)，dist[]=arcs[0][],这表示与源直接连接的点的距离。初始化path[i]=i。</p>
+<li><p>初始化dust,设源点为x，dist[]=arcs[x][],这表示与源直接连接的点的距离。</p>
 </li>
 <li><p>遍历dist[],找到min(dist[i])，修改final[i]=true，path[i]=0(排除final[i]=true，和dist[i]=-1的值)</p>
 </li>
 <li><p>遍历arcs[i][]，若存在dist[j]&gt;dist[i]+arsc[i][j]（-1视为无限大），修改dist[j]=dist[i]+arsc[i][j]，path[j]=i</p>
 </li>
-<li><p>重复二、三步n-1次后算法结束。</p>
+<li><p>重复二、三步，至多n-1次后算法结束。</p>
 </li>
 </ol>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>// todo，乏了，回宫……</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs go"><span class="hljs-keyword">package</span> main<br><br><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span><br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">dijkstra</span><span class="hljs-params">(graph [][]<span class="hljs-type">int</span>, start <span class="hljs-type">int</span>)</span></span> ([]<span class="hljs-type">int</span>, []<span class="hljs-type">int</span>) &#123;<br>	final := <span class="hljs-built_in">make</span>([]<span class="hljs-type">bool</span>, <span class="hljs-built_in">len</span>(graph))<br>	dist := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-built_in">len</span>(graph))<br>	<span class="hljs-built_in">copy</span>(dist, graph[start])<br>	path := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>, <span class="hljs-built_in">len</span>(graph))<br>    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(path); i++ &#123;<br>        path[i] = start<br>    &#125;<br><br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(graph)<span class="hljs-number">-1</span>; i++ &#123;<br>		min := <span class="hljs-number">-1</span><br>		<span class="hljs-comment">// 遍历dist，找到当前还未确定最短距离的点中距离最短的那个，将其标记为已确定最短距离</span><br>		<span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">len</span>(graph); j++ &#123;<br>			<span class="hljs-keyword">if</span> !final[j] &amp;&amp; dist[j] != <span class="hljs-number">-1</span> &#123;<br>				<span class="hljs-keyword">if</span> min == <span class="hljs-number">-1</span> &#123;<br>					min = j<br>				&#125;<br>				<span class="hljs-keyword">if</span> dist[j] &lt; dist[min] &#123;<br>					min = j<br>				&#125;<br>			&#125;<br>		&#125;<br>		<span class="hljs-comment">// 说明已经没有任何一个可达的点，程序结束</span><br>		<span class="hljs-keyword">if</span> min == <span class="hljs-number">-1</span> &#123;<br>			<span class="hljs-keyword">for</span> a := <span class="hljs-number">0</span>; a &lt; <span class="hljs-built_in">len</span>(graph); a++ &#123;<br>				<span class="hljs-keyword">if</span> dist[a] == <span class="hljs-number">-1</span> &#123;<br>					path[a] = <span class="hljs-number">-1</span><br>				&#125;<br>			&#125;<br>			<span class="hljs-keyword">return</span> dist, path<br>		&#125;<br><br>		final[min] = <span class="hljs-literal">true</span><br>		<span class="hljs-comment">// 更新dist，寻找是否有更小的距离去找到可达点</span><br>		<span class="hljs-keyword">for</span> k := <span class="hljs-number">0</span>; k &lt; <span class="hljs-built_in">len</span>(graph[min]); k++ &#123;<br>			<span class="hljs-keyword">if</span> graph[min][k] != <span class="hljs-number">-1</span> &amp;&amp; (graph[min][k]+dist[min] &lt; dist[k] || dist[k] == <span class="hljs-number">-1</span>) &#123;<br>				dist[k] = graph[min][k] + dist[min]<br>				path[k] = min<br>			&#125;<br>		&#125;<br>	&#125;<br>    <span class="hljs-comment">// 更新path的值，将不可达的点对应路径改为-1（初值为0，-1表示不可达）</span><br>	<span class="hljs-keyword">for</span> a := <span class="hljs-number">0</span>; a &lt; <span class="hljs-built_in">len</span>(graph); a++ &#123;<br>		<span class="hljs-keyword">if</span> dist[a] == <span class="hljs-number">-1</span> &#123;<br>			path[a] = <span class="hljs-number">-1</span><br>		&#125;<br>	&#125;<br><br>	<span class="hljs-keyword">return</span> dist, path<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;<br>	graph := [][]<span class="hljs-type">int</span>&#123;<br>		&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">8</span>&#125;,<br>		&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>&#125;,<br>		&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">1</span>&#125;,<br>		&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>&#125;,<br>	&#125;<br>	dist, path := dijkstra(graph, <span class="hljs-number">0</span>)<br>	fmt.Println(<span class="hljs-string">&quot;dist:&quot;</span>, dist)<br>	fmt.Println(<span class="hljs-string">&quot;path:&quot;</span>, path)<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>测试所用用例如下：<br><img src="https://img0.baidu.com/it/u=3627875995,4240375248&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=500&amp;h=570" srcset="/img/myloading.gif" lazyload alt=""></p>
 
                 
               </div>
