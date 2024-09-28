@@ -16,21 +16,23 @@
   <meta name="author" content="YZYM">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、分析程序、进程、线程之间的区别与联系。为什么要要引入线程的概念？   程序、进程、线程之间的区别与联系：     程序是一组指令的集合，进程是一次程序的执行过程。进程是动态的具有生命周期，而程序是静态的。 在引入线程的操作系统中，线程是分配CPU的单位，而进程是分配除CPU外其他计算机资源的单位。一个进程能够存在多个线程，一个线程只能属于一个进程。线程的结束不一定会使进程结束，而进程的消亡一定">
+    <meta name="description" content="数据链路层数据链路层主要讨论六方面的问题：  组帧 解决封装成帧，透明传输的问题       差错控制 纠错编码及检错编码   流量控制与可靠传输 介质访问控制 控制对物理介质的访问（物理的链接大多都是共享的）   局域网 广域网 数据链路层设备 网桥、交换机    写在前面一些需要注意的一些东西 数据链路层的主要作用在于加强物理层的传输原始比特流的作用，将物理层提供的可能出错的物理连接改造成逻辑">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统——简答题及解答">
-<meta property="og:url" content="https://1303-yzym.github.io/2024/09/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AE%80%E7%AD%94%E9%A2%98%E5%8F%8A%E8%A7%A3%E7%AD%94/index.html">
+<meta property="og:title" content="计算机网络——数据链路层">
+<meta property="og:url" content="https://1303-yzym.github.io/2024/09/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/index.html">
 <meta property="og:site_name" content="YZYM">
-<meta property="og:description" content="一、分析程序、进程、线程之间的区别与联系。为什么要要引入线程的概念？   程序、进程、线程之间的区别与联系：     程序是一组指令的集合，进程是一次程序的执行过程。进程是动态的具有生命周期，而程序是静态的。 在引入线程的操作系统中，线程是分配CPU的单位，而进程是分配除CPU外其他计算机资源的单位。一个进程能够存在多个线程，一个线程只能属于一个进程。线程的结束不一定会使进程结束，而进程的消亡一定">
+<meta property="og:description" content="数据链路层数据链路层主要讨论六方面的问题：  组帧 解决封装成帧，透明传输的问题       差错控制 纠错编码及检错编码   流量控制与可靠传输 介质访问控制 控制对物理介质的访问（物理的链接大多都是共享的）   局域网 广域网 数据链路层设备 网桥、交换机    写在前面一些需要注意的一些东西 数据链路层的主要作用在于加强物理层的传输原始比特流的作用，将物理层提供的可能出错的物理连接改造成逻辑">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-09-25T01:50:36.000Z">
-<meta property="article:modified_time" content="2024-09-25T03:32:04.336Z">
+<meta property="article:published_time" content="2024-09-28T06:24:44.000Z">
+<meta property="article:modified_time" content="2024-09-28T11:53:59.382Z">
 <meta property="article:author" content="YZYM">
+<meta property="article:tag" content="计算机技术">
+<meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>操作系统——简答题及解答 - YZYM</title>
+  <title>计算机网络——数据链路层 - YZYM</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -229,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="操作系统——简答题及解答"></span>
+            <span id="subtitle" data-typed-text="计算机网络——数据链路层"></span>
           
         </div>
 
@@ -240,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-09-25 09:50" pubdate>
-          2024年9月25日 上午
+        <time datetime="2024-09-28 14:24" pubdate>
+          2024年9月28日 下午
         </time>
       </span>
     
@@ -252,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          2.7k 字
         
       </span>
     
@@ -263,7 +265,7 @@
         
         
         
-          10 分钟
+          23 分钟
         
       </span>
     
@@ -308,12 +310,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">操作系统——简答题及解答</h1>
+            <h1 id="seo-header">计算机网络——数据链路层</h1>
             
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-09-25T11:32:04+08:00
+                    本文最后更新于 2024-09-28T19:53:59+08:00
                   
                   
 
@@ -323,49 +325,164 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h1><p>分析程序、进程、线程之间的区别与联系。为什么要要引入线程的概念？  </p>
-<p>程序、进程、线程之间的区别与联系：   </p>
-<ol>
-<li>程序是一组指令的集合，进程是一次程序的执行过程。进程是动态的具有生命周期，而程序是静态的。</li>
-<li>在引入线程的操作系统中，线程是分配CPU的单位，而进程是分配除CPU外其他计算机资源的单位。一个进程能够存在多个线程，一个线程只能属于一个进程。线程的结束不一定会使进程结束，而进程的消亡一定伴随着进程内所有线程的消亡。</li>
-<li>线程使程序执行流的最小单位，能够独立执行程序。  </li>
-</ol>
-<p>引入线程的目的：<br>引入线程的目的在于，相较于进程更轻量的线程减少程序并发时所付出的时空开销，提高了操作系统的并发性能。</p>
-<h1 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h1><p>什么是作业调度？什么是进程调度？试列举出至少两种作业调度算法，三种进程调度算法。</p>
-<ol>
-<li><p>什么是作业调度：<br>作业调度是按照某种算法规则，从外存的后备队列中将一个或若干个作业调入内存，为其创建进程并分配相应的资源。</p>
+                <h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p>数据链路层主要讨论六方面的问题：</p>
+<ul>
+<li>组帧<blockquote>
+<p>解决封装成帧，透明传输的问题    </p>
+</blockquote>
 </li>
-<li><p>什么是进程调度：<br>进程调度是按照一定的进程调度算法，从就绪队列中选取一个进程，将CPU分配给它。</p>
+<li>差错控制<blockquote>
+<p>纠错编码及检错编码</p>
+</blockquote>
 </li>
-<li><p>两种作业调度算法，三种进程调度算法<br>FCFS，SJF，优先级调度算法都即可以作为作业调度算法又可以作为进程调度算法。</p>
+<li>流量控制与可靠传输</li>
+<li>介质访问控制<blockquote>
+<p>控制对物理介质的访问（物理的链接大多都是共享的）</p>
+</blockquote>
 </li>
-</ol>
-<h1 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h1><p>何谓缓冲技术？给出操作系统中应用缓冲技术的两个列子，并说明其中说明了什么问题。</p>
-<ol>
-<li><p>何谓缓冲技术：<br>缓冲技术是一种用于解决数据吞吐速度不匹配的设备之间数据交换的问题的技术，通常需要牺牲一部分较高速率的存储区作为缓冲区，是一种用空间换时间的技术。</p>
+<li>局域网</li>
+<li>广域网</li>
+<li>数据链路层设备<blockquote>
+<p>网桥、交换机</p>
+</blockquote>
 </li>
-<li><p>两种缓冲技术的应用及其说明的问题：<br>页缓冲队列，将被淘汰的页面暂时的放入缓冲队列中，使再次需要页面调换时的速度提高。说明缓冲技术能够优化运行的效率。<br>I/O缓冲区，解决CPU与I/O设备间速度不匹配的问题。说明缓冲技术能够解决设备间数据吞吐速度不匹配的问题。</p>
+</ul>
+<h2 id="写在前面一些需要注意的一些东西"><a href="#写在前面一些需要注意的一些东西" class="headerlink" title="写在前面一些需要注意的一些东西"></a>写在前面一些需要注意的一些东西</h2><ol>
+<li><p>数据链路层的主要作用在于加强物理层的传输原始比特流的作用，将物理层提供的可能出错的物理连接改造成逻辑上无差错的数据链路。    </p>
 </li>
-</ol>
-<h1 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h1><p>何谓存储管理中的内、外碎片问题？如何解决？</p>
-<ol>
-<li><p>内、外碎片问题：<br>内、外碎片问题都发生在连续分配方式中。<br>在固定分区分配时，无论多小的作业都分配到一个完整的分区，分区中未被使用而浪费的部分就被称为内部碎片。<br>在动态分区分配时，系统根据作业大小动态的调整分区大小，不同的分区之间可能会出现能以被利用的空间，这被称为外部碎片。</p>
+<li><p>数据链路层传输单位是帧，范围是两个相邻的结点间。（其实各层的传输单元都可以笼统的称为数据帧）   </p>
 </li>
-<li><p>如何解决内、外碎片问题？<br>引入分页存储管理机制解决。<br>分页存储管理将存储空间划分为等大的分区（称为页），分配空间使可将若干个页分配给一个进程，这些页可以是不连续的，如此就消除了外部碎片。<br>而对于内部碎片，一个拥有若干个页的进程只会在最后一个页中可能产生内部碎片，对于页的大小，内部碎片的大小是可以接受的。</p>
+<li><p>数据链路要协调两个结点之间的速度，即流量控制。（保证接收方能过够及时的接收数据，防止数据丢失）</p>
 </li>
-</ol>
-<h1 id="五、"><a href="#五、" class="headerlink" title="五、"></a>五、</h1><p>什么是设备独立性？如何实现设备独立性？</p>
-<ol>
-<li><p>设备独立性又称为设备无关性，其含义是指当应用程序请求某类设备服务时，不局限于某一个具体的物理设备。</p>
-</li>
-<li><p>为了实现设备独立性，在设备请求某类设备时，仅为其分配一个虚拟的设备，当实际执行时，再把虚拟设备映射到物理设备上。</p>
+<li><p>交换机能够实现存储交换，交换机两端可以使用不同的链路层协议，以及连接速率不同的链路。</p>
 </li>
 </ol>
-<h1 id="六、"><a href="#六、" class="headerlink" title="六、"></a>六、</h1><p>文件的物理结构（组织）有哪几种？UNIX系统采用什么样的文件物理结构?</p>
-<p>所谓物理结构就是指文件数据在物理存储设备上是如何组织与分布的。有两个方面的问题：</p>
+<h2 id="数据链路层基本名词解释"><a href="#数据链路层基本名词解释" class="headerlink" title="数据链路层基本名词解释"></a>数据链路层基本名词解释</h2><h3 id="三个基本问题"><a href="#三个基本问题" class="headerlink" title="三个基本问题"></a>三个基本问题</h3><p>数据链路层协议有很多种，而有三个基本问题是共同的。（而不是指链路层只有这三个问题，比如还有流量控制，介质访问控制，可靠传输等）</p>
 <ol>
-<li>文件的分配方式</li>
-<li>文件存储空间管理</li>
+<li>封装成帧</li>
+</ol>
+<ul>
+<li><p>封装成帧指的是在一段数据的前后分别添加上首部和尾部，构成帧。   </p>
+</li>
+<li><p>帧是链路层传输的基本数据传送单元。    </p>
+</li>
+<li><p>首部和尾部中包含控制信息，且一个重要的作用是确定帧的界限，即帧定界。   </p>
+</li>
+<li><p>接收方能够从收到的比特流中区分出帧的起始与终止，即帧同步。<br>为了提高帧的传输效率，因尽可能的提高数据在帧中的比例，但随着帧长的增加，在传输过程中发生差错的概率也随之提升，而发生差错的代价也随之增大（时常直接丢弃出错的整个帧）。因此各种协议都会规定帧的数据部分的长度上限，即最大传送单元（Maximum Transmission Unit， MTU）。（！！！！！ 最大传输单元只包括数据部分，只包括数据部分，不要记错了。）   </p>
+</li>
+</ul>
+<ol>
+<li><p>透明传输</p>
+<blockquote>
+<p>透明传输指不论传输的数据是什么样的比特组合，都能够按照原样的在数据链路上传输。</p>
+</blockquote>
+</li>
+<li><p>差错检测<br>略，字面意思。</p>
+</li>
+</ol>
+<h3 id="链路（物理链路）"><a href="#链路（物理链路）" class="headerlink" title="链路（物理链路）"></a>链路（物理链路）</h3><p>指从一个结点到相邻结点的一段物理线路。</p>
+<h3 id="数据链路（逻辑链路）"><a href="#数据链路（逻辑链路）" class="headerlink" title="数据链路（逻辑链路）"></a>数据链路（逻辑链路）</h3><p>在一条链路上传输数据时，除了需要链路本身，还需要一些必要的通信协议来控制数据的传输，把实现这些协议的软件和硬件加到链路上，就构成了数据链路。</p>
+<h3 id="帧"><a href="#帧" class="headerlink" title="帧"></a>帧</h3><p>数据链路层对等实体之间进行逻辑通信的协议数据单元。</p>
+<h3 id="为网络层提供的三种服务"><a href="#为网络层提供的三种服务" class="headerlink" title="为网络层提供的三种服务"></a>为网络层提供的三种服务</h3><ul>
+<li><p>无确认的无连接服务    </p>
+<blockquote>
+<p>源主机发送数据帧之前不需要建立链路连接，目的主机接收到帧时不需要发送确认。数据传输的可靠性由高层负责。适用于误码率较低的信道，如以太网。</p>
+</blockquote>
+</li>
+<li><p>有确认的面向连接服务</p>
+<blockquote>
+<p>帧传输分为三个阶段：建立链路、传输帧、释放链路。目的主机每收到一个帧都要返回确定。适合要求可靠性比较高的场合。</p>
+</blockquote>
+</li>
+<li><p>有确认的无连接服务</p>
+<blockquote>
+<p>源主机发送帧前不需要建立链路连接，但目的主机接收到帧需要返回确认。源主机在所规定的时间内未收到确认则认为帧丢失，重传帧以提高传输的可靠性。该服务适用于误码率较高的信道，如无线通信。</p>
+</blockquote>
+</li>
+</ul>
+<p>有链接就一定有确认，不存在无确认的面向连接的服务</p>
+<h3 id="数据链路层使用的两种信道"><a href="#数据链路层使用的两种信道" class="headerlink" title="数据链路层使用的两种信道"></a>数据链路层使用的两种信道</h3><ul>
+<li>点对点信道<blockquote>
+<p>PPP协议时目前使用最广泛的点对点协议。</p>
+</blockquote>
+</li>
+<li>广播信道<blockquote>
+<p>一对多的广播传播方式。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="帧传输过程中可能出现的两种错误"><a href="#帧传输过程中可能出现的两种错误" class="headerlink" title="帧传输过程中可能出现的两种错误"></a>帧传输过程中可能出现的两种错误</h3><ul>
+<li>位错<blockquote>
+<p>帧中某些位出错，通常采用循环冗余检验（CRC）来检测。</p>
+</blockquote>
+</li>
+<li>帧错<blockquote>
+<p>包括帧丢失、帧重复和帧失序等，都属于传输错误，常用帧编号的方式来检测这些错误。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="组帧"><a href="#组帧" class="headerlink" title="组帧"></a>组帧</h2><p>组帧主要解决帧定界，帧同步和透明传输的问题。<br>由于字符计数法中的技术字段的脆弱性和字节填充法实现上的复杂性与不兼容性，所以目前较常用的是零比特填充法和违规编码法</p>
+<h3 id="字符计数法"><a href="#字符计数法" class="headerlink" title="字符计数法"></a>字符计数法</h3><p>字符计数法在帧首部使用一个计数字段来记录该帧所包含的字节数。接收方通过读帧首部的计数字段就能够计算出帧的结束位置（从而不需要尾部）。<br>这种方法最大的问题在于若计数字段出错，随后所有的帧边界划分依据都将出错，收发双方失去同步，造成灾难性后果。</p>
+<h3 id="字节填充法"><a href="#字节填充法" class="headerlink" title="字节填充法"></a>字节填充法</h3><p>使用特定的字节来定界一帧的开始与结束。<br>SOH放在帧的最前面表示帧的开始。<br>EOT放在帧的末尾表示帧的结束。<br>ESC是ASCII中的控制字符，是一个字符，而非’E’,’S’,’C’三个字符的组合。被用作转义字符，用来实现透明传输。当特殊字符需要出现数据中时，在其前加上转义字符，从而防止其被识别位控制信息。</p>
+<h3 id="零比特填充法"><a href="#零比特填充法" class="headerlink" title="零比特填充法"></a>零比特填充法</h3><p>零比特填充法允许数据帧包含任意个数的比特，它使用一个特定的比特串01111110（六个1嗷）来标志一个帧的开始和结束。<br>为了不是数据字段出现01111110被误判为帧的首位标志。发送方在发射前先扫描整个数据字段，每遇到5个连续的1，就在其后插入一个0。接收方之后对其反操作即可恢复原始数据。<br>零比特填充法很容易使用硬件实现，性能优于字节填充法。</p>
+<blockquote>
+<p>零比特填充法在数据链路层早期被使用在HDLC协议中。</p>
+</blockquote>
+<h3 id="违规编码法"><a href="#违规编码法" class="headerlink" title="违规编码法"></a>违规编码法</h3><p>在物理层进行比特编码时，常采用违规编码法。如曼彻斯特编码将数据比特’1’编码为’高-低’电平对，’0’为’低-高’电平对，而’高-高’与’低-低’电平对是违规的，可以借用这些违规编码来界定帧的开始和结束。<br>局域网IEEE 802标准就采用了违规编码法。违规编码法不采用任何填充技术便能够实现数据的透明传输，但只适用于采用冗余编码的特殊编码环境。</p>
+<h2 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h2><p>实际通信链路都不是理想的，数据在传输过程中可能产生差错。<br>我们常讨论的传输差错常分为两种：</p>
+<ul>
+<li>帧差错（帧错）<blockquote>
+<p>也就是上面说的帧失序，帧丢失，帧重复等</p>
+</blockquote>
+</li>
+<li>比特差错（位错）</li>
+</ul>
+<p>下面我们仅讨论比特差错，帧差错会在可靠传输机制中讨论。<br>通常采用编码技术进行差错控制，主要分为两类：</p>
+<ul>
+<li>自动请求重传（Automatic Repeat reQuest，ARQ）<blockquote>
+<p>接收方检测到错误是，就请求发送方重传，直到接收到正确的数据。</p>
+</blockquote>
+</li>
+<li>前向纠错（Forward Error Correction，FEC）<blockquote>
+<p>在FEC方式中，接收方不仅能够发现错误，而且能够确定错误的位置并加以改正。</p>
+</blockquote>
+</li>
+</ul>
+<p>因此差错控制分为</p>
+<ul>
+<li>检错编码</li>
+<li>纠错编码</li>
+</ul>
+<p>两类。</p>
+<h3 id="检错编码"><a href="#检错编码" class="headerlink" title="检错编码"></a>检错编码</h3><p>检错编码都采用冗余编码技术。常见的检错编码有</p>
+<ul>
+<li>奇偶校验码</li>
+<li>循环冗余检验码</li>
+</ul>
+<h4 id="奇偶检验码"><a href="#奇偶检验码" class="headerlink" title="奇偶检验码"></a>奇偶检验码</h4><p>奇偶检验码是奇检验码和偶检验码的统称，是一种最基本的校验码。它由n-1位数据和1位检验位组成，检验位的取值（0或1）将使整个检验码中“1”的个数为奇数或偶数。</p>
+<p>特点：<br>只能检验奇数位数据是否出错，且无法知道哪些位错了，而且无法检验出偶数个出错位的情况。</p>
+<h4 id="循环冗余码"><a href="#循环冗余码" class="headerlink" title="循环冗余码"></a>循环冗余码</h4><p>循环冗余校验（Cyclic redundancy check）被广泛引用于数据链路层。    </p>
+<ol>
+<li>约定好一个生成多项式，利用二进制串表示。此二进制串有r位，且最高位与最低为都为1   </li>
+<li>生成的冗余码位r位</li>
+<li>检验时是数据与冗余码拼接，除生成多项式。若无差错，则可整除。<h5 id="循环冗余校验的数学原理"><a href="#循环冗余校验的数学原理" class="headerlink" title="循环冗余校验的数学原理"></a>循环冗余校验的数学原理</h5>CRC的数学基础是模2剩余类域上的一元多项式环。   </li>
+<li>模2剩余类域：<br>由0和1构成的集合，定义了以下的加法与乘法运算，并且加法满足交换律、结合律，乘法满足交换律、结合律，加法与乘法满足左、右分配律，便是一个 模2剩余类域。</li>
+</ol>
+<ul>
+<li><p>加法规则：<br>$ 1 + 1 = (1+1)\mod2=0$<br>$ 1 + 0 = (1+0)\mod2=1$<br>$ 0 + 1 = (0+1)\mod2=1$<br>$ 0 + 0 = (0+0)\mod2=0$   </p>
+</li>
+<li><p>乘法规则：<br>$1\cdot1=(1\cdot1)\mod2=1$<br>$1\cdot0=(1\cdot0)\mod2=0$<br>$0\cdot1=(0\cdot1)\mod2=0$<br>$0\cdot0=(0\cdot0)\mod2=0$    </p>
+</li>
+</ul>
+<p>模2剩余类域上，减法是基于加法定义的，减一个数就是加上这个数的负元。某个数的负元就是跟这个数相加等于0的的那个数。于是，由上面的加法规则，可以知道，1的负元是1自己，0的负元是0自己。于是便有如下的减法运算。</p>
+<ul>
+<li>减法规则：<br>$1-1=1+(-1)=(1+1)\mod2=0$<br>$1-0=1+(-0)=(1+0)\mod2=1$<br>$0-1=0+(-1)=(0+1)\mod2=1$<br>$0-0=0+(-0)=(0+0)\mod2=0$    </li>
+</ul>
+<p>由上面，可以看出，模2剩余类域上的减法与加法运算法则是一样的，没有区别。另外，若把模2剩余类域中的数看作二进制数位，便可发现，其加法运算法则与减法运算法则，与二进制数位的异或运算法则等同。</p>
+<p>// tood，补全数学原理</p>
+<h4 id="循环冗余码的计算过程"><a href="#循环冗余码的计算过程" class="headerlink" title="循环冗余码的计算过程"></a>循环冗余码的计算过程</h4><ol>
+<li>设生成多项式 $ G(x)$ 为r阶，在数据后面加上r个0，相当于乘以 $2^r$。</li>
+<li>利用模二除法，用1）除 $ G(x)$ 得到的余数即为冗余码。</li>
 </ol>
 
                 
@@ -375,6 +492,36 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF/" class="category-chain-item">计算机技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%8A%80%E6%9C%AF/" class="print-no-link">#计算机技术</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="print-no-link">#计算机网络</a>
+      
+    </div>
   
 </div>
 
@@ -384,8 +531,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>操作系统——简答题及解答</div>
-      <div>https://1303-yzym.github.io/2024/09/25/操作系统——简答题及解答/</div>
+      <div>计算机网络——数据链路层</div>
+      <div>https://1303-yzym.github.io/2024/09/28/计算机网络——数据链路层/</div>
     </div>
     <div class="license-meta">
       
@@ -397,7 +544,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年9月25日</div>
+          <div>2024年9月28日</div>
         </div>
       
       
@@ -429,18 +576,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E2%80%94%E2%80%94%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" title="计算机网络——数据链路层">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">计算机网络——数据链路层</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/09/24/%E6%89%80%E6%9C%89%E9%A1%B6%E7%82%B9%E9%97%B4%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E2%80%94%E2%80%94Floyd%E7%AE%97%E6%B3%95/" title="所有顶点间最短路径——Floyd算法">
-                        <span class="hidden-mobile">所有顶点间最短路径——Floyd算法</span>
+                      <a href="/2024/09/25/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E2%80%94%E2%80%94%E7%AE%80%E7%AD%94%E9%A2%98%E5%8F%8A%E8%A7%A3%E7%AD%94/" title="操作系统——简答题及解答">
+                        <span class="hidden-mobile">操作系统——简答题及解答</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
