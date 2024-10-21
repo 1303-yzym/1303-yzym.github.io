@@ -24,7 +24,7 @@
 <meta property="og:description" content="数据链路层数据链路层主要讨论六方面的问题：  组帧 解决封装成帧，透明传输的问题       差错控制 纠错编码及检错编码   流量控制与可靠传输 介质访问控制 控制对物理介质的访问（物理的链接大多都是共享的）   局域网 广域网 数据链路层设备 网桥、交换机    写在前面一些需要注意的一些东西 数据链路层的主要作用在于加强物理层的传输原始比特流的作用，将物理层提供的可能出错的物理连接改造成逻辑">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-09-28T06:24:44.000Z">
-<meta property="article:modified_time" content="2024-09-28T11:53:59.382Z">
+<meta property="article:modified_time" content="2024-10-21T08:50:21.381Z">
 <meta property="article:author" content="YZYM">
 <meta property="article:tag" content="计算机技术">
 <meta property="article:tag" content="计算机网络">
@@ -315,7 +315,7 @@
               <p id="updated-time" class="note note-info" style="display: none">
                 
                   
-                    本文最后更新于 2024-09-28T19:53:59+08:00
+                    本文最后更新于 2024-10-21T16:50:21+08:00
                   
                   
 
@@ -356,9 +356,9 @@
 </li>
 <li><p>交换机能够实现存储交换，交换机两端可以使用不同的链路层协议，以及连接速率不同的链路。</p>
 </li>
-</ol>
+<li><p>CRC检验码能够检查出所有的单比特错误</p>
 <h2 id="数据链路层基本名词解释"><a href="#数据链路层基本名词解释" class="headerlink" title="数据链路层基本名词解释"></a>数据链路层基本名词解释</h2><h3 id="三个基本问题"><a href="#三个基本问题" class="headerlink" title="三个基本问题"></a>三个基本问题</h3><p>数据链路层协议有很多种，而有三个基本问题是共同的。（而不是指链路层只有这三个问题，比如还有流量控制，介质访问控制，可靠传输等）</p>
-<ol>
+</li>
 <li>封装成帧</li>
 </ol>
 <ul>
@@ -461,7 +461,7 @@
 </ul>
 <h4 id="奇偶检验码"><a href="#奇偶检验码" class="headerlink" title="奇偶检验码"></a>奇偶检验码</h4><p>奇偶检验码是奇检验码和偶检验码的统称，是一种最基本的校验码。它由n-1位数据和1位检验位组成，检验位的取值（0或1）将使整个检验码中“1”的个数为奇数或偶数。</p>
 <p>特点：<br>只能检验奇数位数据是否出错，且无法知道哪些位错了，而且无法检验出偶数个出错位的情况。</p>
-<h4 id="循环冗余码"><a href="#循环冗余码" class="headerlink" title="循环冗余码"></a>循环冗余码</h4><p>循环冗余校验（Cyclic redundancy check）被广泛引用于数据链路层。    </p>
+<h4 id="循环冗余码"><a href="#循环冗余码" class="headerlink" title="循环冗余码"></a>循环冗余码</h4><p>循环冗余校验（Cyclic redundancy check）被广泛引用于数据链路层。CRC实际上拥有纠错的能力，但在数据链路层常常只用其检错。<br>CRC能过够检测出所有的单比特错误。    </p>
 <ol>
 <li>约定好一个生成多项式，利用二进制串表示。此二进制串有r位，且最高位与最低为都为1   </li>
 <li>生成的冗余码位r位</li>
@@ -484,7 +484,7 @@
 <li>设生成多项式 $ G(x)$ 为r阶，在数据后面加上r个0，相当于乘以 $2^r$。</li>
 <li>利用模二除法，用1）除 $ G(x)$ 得到的余数即为冗余码。</li>
 </ol>
-
+<h3 id="纠错编码"><a href="#纠错编码" class="headerlink" title="纠错编码"></a>纠错编码</h3>
                 
               </div>
             
@@ -575,6 +575,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/10/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E9%94%99%E9%A2%98%E6%95%B4%E7%90%86/" title="操作系统-错题整理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统-错题整理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
